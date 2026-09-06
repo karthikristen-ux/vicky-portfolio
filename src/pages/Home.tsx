@@ -41,7 +41,7 @@ export const Home: React.FC = () => {
           height: '100vh',
           zIndex: -1,
           background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(45, 75, 180, 0.15) 0%, rgba(0, 0, 0, 0) 50%)',
-          backgroundColor: '#050505'
+          backgroundColor: 'transparent'
         }}
       />
 

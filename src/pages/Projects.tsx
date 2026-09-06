@@ -171,41 +171,45 @@ export const Projects: React.FC = () => {
             <div style={{ 
               display: 'flex', 
               flexDirection: 'column', 
-              gap: '1rem', 
-              minWidth: '200px', 
+              gap: '1.5rem', 
               padding: '1rem',
               overflowY: 'auto',
               borderRight: '1px solid rgba(255,255,255,0.08)'
             }}>
-              <h3 style={{ fontFamily: "'Fredoka', sans-serif", color: '#fff', fontSize: '1.2rem', marginBottom: '1rem' }}>PARTS</h3>
               {proj.parts.map((part, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActivePartIdx(idx)}
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
                     background: 'transparent',
                     border: 'none',
-                    color: activePartIdx === idx ? '#fff' : '#666',
-                    textAlign: 'left',
+                    color: activePartIdx === idx ? '#fff' : '#444',
                     cursor: 'pointer',
-                    padding: '0.5rem',
+                    padding: '0.2rem',
                     transition: 'color 0.3s',
                     fontFamily: "'Playfair Display', serif",
                     fontStyle: 'italic',
-                    fontSize: '1.1rem'
+                    fontSize: '1.2rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}
                 >
-                  <span style={{ fontSize: '0.9rem', fontFamily: 'monospace', opacity: 0.7 }}>0{idx + 1}</span>
-                  {part.name}
+                  0{idx + 1}
                 </button>
               ))}
             </div>
 
-            {/* 3D Model Viewer */}
+            {/* 3D Model Viewer with Part Name Overlay */}
             <div style={{ flex: 1, position: 'relative', height: '100%', borderRadius: '16px', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: '20px', left: '20px', zIndex: 10 }}>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', color: '#a3a3a3', fontSize: '1rem' }}>
+                  0{activePartIdx + 1}
+                </span>
+                <h3 style={{ fontFamily: "'Fredoka', sans-serif", color: '#fff', fontSize: '1.8rem', margin: 0, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                  {proj.parts[activePartIdx].name}
+                </h3>
+              </div>
               <STLViewer url={proj.parts[activePartIdx].stlUrl} />
             </div>
           </div>

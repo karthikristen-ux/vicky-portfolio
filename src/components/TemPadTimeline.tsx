@@ -6,7 +6,7 @@ const timelineData = [
     id: '01',
     title: '10th Grade',
     subtitle: 'Maharishi Vidhya Mandhir',
-    date: '03.15.2017',
+    date: '2017',
     description: 'Foundation in science and mathematics, developing an early interest in engineering and mechanics.',
     align: 'left'
   },
@@ -14,7 +14,7 @@ const timelineData = [
     id: '02',
     title: '12th Grade',
     subtitle: 'Maharishi Vidhya Mandhir',
-    date: '05.20.2019',
+    date: '2019',
     description: 'Advanced studies in physics and mathematics, preparing for a career in mechatronics and product design.',
     align: 'right'
   },
@@ -22,7 +22,7 @@ const timelineData = [
     id: '03',
     title: 'B.E. Mechatronics',
     subtitle: 'Sathyabama IST',
-    date: '08.10.2023',
+    date: '2023',
     description: 'Comprehensive engineering degree focusing on mechanical systems, electronics, and control theory.',
     align: 'left'
   },
@@ -30,7 +30,7 @@ const timelineData = [
     id: '04',
     title: 'NPD Trainee',
     subtitle: 'Alinks 3D',
-    date: '01.01.2025',
+    date: '2025',
     description: 'Hands-on experience in New Product Development, 3D printing, CAD modeling, and reverse engineering.',
     align: 'right'
   }
