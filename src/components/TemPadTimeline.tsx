@@ -108,7 +108,7 @@ export const TemPadTimeline: React.FC = () => {
               <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1rem', color: '#a3a3a3', fontStyle: 'italic' }}>
                 {item.id} &mdash; {item.date}
               </span>
-              <h3 style={{ fontFamily: "'Fredoka', sans-serif", fontSize: '2rem', margin: 0, color: '#fff', textTransform: 'uppercase', letterSpacing: '1px' }}>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', margin: 0, color: '#fff', textTransform: 'uppercase', letterSpacing: '1px' }}>
                 {item.title}
               </h3>
               <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 500, color: '#e0e0e0', letterSpacing: '0.5px' }}>

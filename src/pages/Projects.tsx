@@ -196,24 +196,24 @@ export const Projects: React.FC = () => {
               <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '3rem', color: '#fff', margin: '0 0 1rem 0', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 'normal' }}>
                 Project Archive
               </h1>
-              <p style={{ fontFamily: "'Fredoka', sans-serif", fontSize: '0.9rem', color: '#fff', letterSpacing: '3px', textTransform: 'uppercase', opacity: 0.8 }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.9rem', color: '#fff', letterSpacing: '3px', textTransform: 'uppercase', opacity: 0.8 }}>
                 Select a blueprint to decrypt classified project data
               </p>
             </div>
 
-            <div style={{ position: 'relative', width: '100%', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ position: 'relative', width: '100%', height: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
               
               {/* Left Arrow */}
               <button 
                 onClick={prevProject}
-                style={{ position: 'absolute', left: '2rem', zIndex: 20, background: 'none', border: '1px solid rgba(229, 169, 60, 0.5)', color: '#fff', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s', fontSize: '1.2rem' }}
+                style={{ position: 'absolute', left: '2rem', top: '50%', transform: 'translateY(-50%)', zIndex: 20, background: 'none', border: '1px solid rgba(229, 169, 60, 0.5)', color: '#fff', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s', fontSize: '1.2rem' }}
                 onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(229, 169, 60, 0.1)' }}
                 onMouseOut={(e) => { e.currentTarget.style.background = 'none' }}
               >
                 &#10094;
               </button>
 
-              <div style={{ position: 'relative', width: '400px', height: '450px' }}>
+              <div style={{ position: 'relative', width: '400px', height: '400px' }}>
                 {projects.map((p, idx) => {
                   const style = getCardStyle(idx);
                   return (
@@ -236,7 +236,7 @@ export const Projects: React.FC = () => {
                         position: 'absolute', 
                         top: 0, left: 0, right: 0, bottom: 0,
                         backgroundImage: `url('${p.image}')`,
-                        backgroundSize: 'cover',
+                        backgroundSize: 'contain',
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
                         zIndex: -2,
@@ -257,20 +257,9 @@ export const Projects: React.FC = () => {
                       <div style={{ 
                         position: 'absolute', 
                         top: 0, left: 0, right: 0, bottom: 0,
-                        background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0) 100%)',
+                        background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%)',
                         zIndex: -1 
                       }} />
-                      
-                      {idx === activeProjectIdx && (
-                        <div style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', zIndex: 10 }}>
-                          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', margin: 0, color: '#fff', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 'normal' }}>
-                            {p.title}
-                          </h2>
-                          <span style={{ fontFamily: "'Fredoka', sans-serif", fontSize: '0.9rem', color: '#fff', display: 'block', marginTop: '0.5rem', opacity: 0.8, letterSpacing: '1px' }}>
-                            [{p.year}]
-                          </span>
-                        </div>
-                      )}
                     </div>
                   );
                 })}
@@ -279,23 +268,23 @@ export const Projects: React.FC = () => {
               {/* Right Arrow */}
               <button 
                 onClick={nextProject}
-                style={{ position: 'absolute', right: '2rem', zIndex: 20, background: 'none', border: '1px solid rgba(229, 169, 60, 0.5)', color: '#fff', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s', fontSize: '1.2rem' }}
+                style={{ position: 'absolute', right: '2rem', top: '50%', transform: 'translateY(-50%)', zIndex: 20, background: 'none', border: '1px solid rgba(229, 169, 60, 0.5)', color: '#fff', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s', fontSize: '1.2rem' }}
                 onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(229, 169, 60, 0.1)' }}
                 onMouseOut={(e) => { e.currentTarget.style.background = 'none' }}
               >
                 &#10095;
               </button>
-            </div>
-            
-            <div style={{ marginTop: '5rem', textAlign: 'center' }}>
-              <button 
-                onClick={() => setIsOpen(true)}
-                style={{ background: 'transparent', border: '1px solid #e5a93c', color: '#fff', padding: '0.8rem 2.5rem', fontFamily: "'Fredoka', sans-serif", letterSpacing: '2px', textTransform: 'uppercase', borderRadius: '4px', cursor: 'pointer', transition: 'all 0.3s' }}
-                onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(229, 169, 60, 0.1)' }}
-                onMouseOut={(e) => { e.currentTarget.style.background = 'transparent' }}
-              >
-                Click Me For Facts!
-              </button>
+              
+              {/* Title below carousel */}
+              <div style={{ position: 'absolute', bottom: '1rem', left: 0, right: 0, textAlign: 'center', zIndex: 10 }}>
+                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', margin: 0, color: '#e5a93c', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 'normal' }}>
+                  {projects[activeProjectIdx].title}
+                </h2>
+                <div style={{ width: '40px', height: '1px', background: 'rgba(229, 169, 60, 0.5)', margin: '0.5rem auto' }} />
+                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.9rem', color: '#fff', display: 'block', opacity: 0.8, letterSpacing: '1px' }}>
+                  [{projects[activeProjectIdx].year}]
+                </span>
+              </div>
             </div>
           </motion.div>
         ) : (
@@ -309,7 +298,7 @@ export const Projects: React.FC = () => {
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '3rem', borderBottom: '1px solid rgba(229, 169, 60, 0.2)', paddingBottom: '1.5rem' }}>
               <div>
-                <span style={{ fontFamily: "'Fredoka', sans-serif", fontSize: '1rem', color: '#fff', opacity: 0.8, marginBottom: '0.5rem', display: 'block', letterSpacing: '1px' }}>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '1rem', color: '#fff', opacity: 0.8, marginBottom: '0.5rem', display: 'block', letterSpacing: '1px' }}>
                   FILE NO. {activeProjectIdx + 1} // [{proj.year}]
                 </span>
                 <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.5rem', margin: 0, color: '#fff', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 'normal' }}>
@@ -318,7 +307,7 @@ export const Projects: React.FC = () => {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                style={{ background: 'transparent', border: '1px solid #e5a93c', color: '#fff', padding: '0.5rem 1.5rem', fontFamily: "'Fredoka', sans-serif", letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '4px', cursor: 'pointer', transition: 'all 0.3s', marginTop: '0.5rem' }}
+                style={{ background: 'transparent', border: '1px solid #e5a93c', color: '#fff', padding: '0.5rem 1.5rem', fontFamily: "'Inter', sans-serif", letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '4px', cursor: 'pointer', transition: 'all 0.3s', marginTop: '0.5rem' }}
                 onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(229, 169, 60, 0.1)' }}
                 onMouseOut={(e) => { e.currentTarget.style.background = 'transparent' }}
               >
@@ -334,7 +323,7 @@ export const Projects: React.FC = () => {
                   background: 'none',
                   border: 'none',
                   color: activeTab === 'description' ? '#e5a93c' : 'rgba(229, 169, 60, 0.5)',
-                  fontFamily: "'Fredoka', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: '1.2rem',
                   cursor: 'pointer',
                   padding: '0.5rem 0',
@@ -350,7 +339,7 @@ export const Projects: React.FC = () => {
                   background: 'none',
                   border: 'none',
                   color: activeTab === 'parts' ? '#e5a93c' : 'rgba(229, 169, 60, 0.5)',
-                  fontFamily: "'Fredoka', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: '1.2rem',
                   cursor: 'pointer',
                   padding: '0.5rem 0',
@@ -375,10 +364,10 @@ export const Projects: React.FC = () => {
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                     <div style={{ background: 'rgba(229, 169, 60, 0.03)', padding: '2rem', borderRadius: '8px', border: '1px solid rgba(229, 169, 60, 0.1)' }}>
                       <h3 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>OVERVIEW</h3>
-                      <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Fredoka', sans-serif" }}>{proj.description}</p>
+                      <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Inter', sans-serif" }}>{proj.description}</p>
                       
                       <h3 style={{ fontFamily: "'Playfair Display', serif", marginTop: '2rem', marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>KEY FEATURES</h3>
-                      <ul style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', paddingLeft: '1.2rem', fontFamily: "'Fredoka', sans-serif" }}>
+                      <ul style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', paddingLeft: '1.2rem', fontFamily: "'Inter', sans-serif" }}>
                         {proj.features?.map((f, i) => (
                           <li key={i} style={{ marginBottom: '0.5rem' }}>{f}</li>
                         ))}
@@ -388,11 +377,11 @@ export const Projects: React.FC = () => {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                       <div style={{ background: 'rgba(229, 169, 60, 0.03)', padding: '2rem', borderRadius: '8px', border: '1px solid rgba(229, 169, 60, 0.1)' }}>
                         <h3 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>PROBLEM</h3>
-                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Fredoka', sans-serif" }}>{proj.problemStatement}</p>
+                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Inter', sans-serif" }}>{proj.problemStatement}</p>
                       </div>
                       <div style={{ background: 'rgba(229, 169, 60, 0.03)', padding: '2rem', borderRadius: '8px', border: '1px solid rgba(229, 169, 60, 0.1)' }}>
                         <h3 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>SOLUTION</h3>
-                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Fredoka', sans-serif" }}>{proj.solution}</p>
+                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Inter', sans-serif" }}>{proj.solution}</p>
                       </div>
                     </div>
                   </div>
@@ -449,12 +438,17 @@ export const Projects: React.FC = () => {
 
                         {/* Text side */}
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: idx % 2 === 0 ? 'flex-start' : 'flex-end', textAlign: idx % 2 === 0 ? 'left' : 'right' }}>
-                          <span style={{ fontFamily: "'Fredoka', sans-serif", fontSize: '1rem', color: '#fff', opacity: 0.8, marginBottom: '0.5rem', letterSpacing: '1px' }}>
+                          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '1rem', color: '#fff', opacity: 0.8, marginBottom: '0.5rem', letterSpacing: '1px' }}>
                             PART NO. 0{idx + 1}
                           </span>
                           <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', margin: 0, color: '#fff', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 'normal' }}>
                             {part.name}
                           </h3>
+                          {part.description && (
+                            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '1rem', color: '#fff', opacity: 0.7, marginTop: '1rem', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                              {part.description}
+                            </p>
+                          )}
                           
                           {/* Subtle decorative line connecting to node */}
                           <div style={{
