@@ -35,15 +35,15 @@ const Navigation = () => {
   }, [menuOpen]);
 
   const navItems = [
-    { path: '/', label: 'Timeline' },
+    { path: '/', label: 'Home' },
     { path: '/projects', label: 'Projects' },
     { path: '/certificates', label: 'Credentials' },
   ];
 
   return (
     <>
-      <nav className={location.pathname !== '/' ? 'nav-collapsed' : ''} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 2rem', position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, transition: 'all 0.3s ease', background: scrolled ? 'rgba(5,5,5,0.85)' : 'transparent', backdropFilter: scrolled ? 'blur(12px)' : 'none', borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : '1px solid transparent' }}>
-        <Link to="/" className="logo" style={{ textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', fontWeight: 700, fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '2.5rem' }}>
+      <nav className={location.pathname !== '/' ? 'nav-collapsed' : ''} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1.5rem 2rem', position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, transition: 'all 0.3s ease', background: scrolled ? 'rgba(5,5,5,0.85)' : 'transparent', backdropFilter: scrolled ? 'blur(12px)' : 'none', borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : '1px solid transparent' }}>
+        <Link to="/" className="logo" style={{ position: 'absolute', left: '2rem', textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', fontWeight: 700, fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '2.5rem' }}>
           V
         </Link>
 
@@ -60,12 +60,12 @@ const Navigation = () => {
           ))}
         </div>
         
-        {/* Empty div for flex-between spacing symmetry */}
-        <div style={{ width: '150px' }}></div>
+        {/* Empty div for flex-between spacing symmetry removed since we use absolute positioning for logo and hamburger */}
 
         {/* Hamburger button (mobile only) */}
         <button
           className="hamburger-btn"
+          style={{ position: 'absolute', right: '2rem' }}
           onClick={() => setMenuOpen(true)}
           aria-label="Open menu"
           aria-expanded={menuOpen}
