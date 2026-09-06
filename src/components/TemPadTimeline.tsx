@@ -114,7 +114,7 @@ export const TemPadTimeline: React.FC = () => {
               <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 500, color: '#e0e0e0', letterSpacing: '0.5px' }}>
                 {item.subtitle}
               </h4>
-              <p style={{ margin: '1rem 0 0 0', color: '#888', lineHeight: '1.6', fontSize: '0.95rem', fontFamily: "'Playfair Display', serif", textTransform: 'lowercase' }}>
+              <p style={{ margin: '1rem 0 0 0', color: '#888', lineHeight: '1.6', fontSize: '0.95rem', fontFamily: "'Playfair Display', serif", textTransform: 'capitalize' }}>
                 {item.description}
               </p>
             </div>

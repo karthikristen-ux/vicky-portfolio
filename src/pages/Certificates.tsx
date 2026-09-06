@@ -34,7 +34,7 @@ export const Certificates: React.FC = () => {
             >
               <Award size={32} color="var(--tva-orange)" style={{ flexShrink: 0, marginTop: '4px' }} />
               <div style={{ minWidth: 0 }}>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", textTransform: 'lowercase', fontSize: 'clamp(1rem, 1.5vw, 1.2rem)', marginBottom: '0.5rem', lineHeight: 1.4 }}>{cert.name}</h3>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", textTransform: 'capitalize', fontSize: 'clamp(1rem, 1.5vw, 1.2rem)', marginBottom: '0.5rem', lineHeight: 1.4 }}>{cert.name}</h3>
                 <span style={{ color: 'var(--tva-orange)', opacity: 0.7, fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>[{cert.date}]</span>
                 <div style={{ marginTop: '1rem', width: '100%', height: '2px', backgroundColor: 'var(--tva-orange)', opacity: 0.3 }} />
               </div>

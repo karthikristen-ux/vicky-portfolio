@@ -65,10 +65,10 @@ export const Home: React.FC = () => {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '64px', height: '64px', borderRadius: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '0.5rem' }}>
               <Cpu size={28} color="#fff" strokeWidth={1.5} />
             </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff', margin: 0, fontFamily: "'Inter', sans-serif" }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff', margin: 0, fontFamily: "'Playfair Display', serif", textTransform: 'uppercase', letterSpacing: '1px' }}>
               Core Architecture
             </h3>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem', color: '#a3a3a3', fontSize: '0.95rem' }}>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem', color: '#a3a3a3', fontSize: '0.95rem', fontFamily: "'Playfair Display', serif", textTransform: 'capitalize' }}>
               <li>PTC Creo Parametric &amp; TDD</li>
               <li>3D Printing (PLA, PETG, ABS, TPU)</li>
               <li>CAD Modeling &amp; Reverse Engineering</li>
@@ -80,10 +80,10 @@ export const Home: React.FC = () => {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '64px', height: '64px', borderRadius: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '0.5rem' }}>
               <Terminal size={28} color="#fff" strokeWidth={1.5} />
             </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff', margin: 0, fontFamily: "'Inter', sans-serif" }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff', margin: 0, fontFamily: "'Playfair Display', serif", textTransform: 'uppercase', letterSpacing: '1px' }}>
               Deployment Tools
             </h3>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem', color: '#a3a3a3', fontSize: '0.95rem' }}>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem', color: '#a3a3a3', fontSize: '0.95rem', fontFamily: "'Playfair Display', serif", textTransform: 'capitalize' }}>
               <li>PTC Creo / SolidWorks</li>
               <li>Bambu Studio (Slicer Software)</li>
               <li>Bambu Lab A1, P1S Printers</li>

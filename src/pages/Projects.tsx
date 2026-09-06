@@ -365,10 +365,10 @@ export const Projects: React.FC = () => {
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                     <div style={{ background: 'rgba(229, 169, 60, 0.03)', padding: '2rem', borderRadius: '8px', border: '1px solid rgba(229, 169, 60, 0.1)' }}>
                       <h3 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>OVERVIEW</h3>
-                      <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Playfair Display', serif", textTransform: 'lowercase' }}>{proj.description}</p>
+                      <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Playfair Display', serif", textTransform: 'capitalize' }}>{proj.description}</p>
                       
                       <h3 style={{ fontFamily: "'Playfair Display', serif", marginTop: '2rem', marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>KEY FEATURES</h3>
-                      <ul style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', paddingLeft: '1.2rem', fontFamily: "'Playfair Display', serif", textTransform: 'lowercase' }}>
+                      <ul style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', paddingLeft: '1.2rem', fontFamily: "'Playfair Display', serif", textTransform: 'capitalize' }}>
                         {proj.features?.map((f, i) => (
                           <li key={i} style={{ marginBottom: '0.5rem' }}>{f}</li>
                         ))}
@@ -378,11 +378,11 @@ export const Projects: React.FC = () => {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                       <div style={{ background: 'rgba(229, 169, 60, 0.03)', padding: '2rem', borderRadius: '8px', border: '1px solid rgba(229, 169, 60, 0.1)' }}>
                         <h3 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>PROBLEM</h3>
-                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Playfair Display', serif", textTransform: 'lowercase' }}>{proj.problemStatement}</p>
+                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Playfair Display', serif", textTransform: 'capitalize' }}>{proj.problemStatement}</p>
                       </div>
                       <div style={{ background: 'rgba(229, 169, 60, 0.03)', padding: '2rem', borderRadius: '8px', border: '1px solid rgba(229, 169, 60, 0.1)' }}>
                         <h3 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>SOLUTION</h3>
-                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Playfair Display', serif", textTransform: 'lowercase' }}>{proj.solution}</p>
+                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Playfair Display', serif", textTransform: 'capitalize' }}>{proj.solution}</p>
                       </div>
                     </div>
                   </div>
@@ -446,7 +446,7 @@ export const Projects: React.FC = () => {
                             {part.name}
                           </h3>
                           {part.description && (
-                            <p style={{ fontFamily: "'Playfair Display', serif", textTransform: 'lowercase', fontSize: '1rem', color: '#fff', opacity: 0.7, marginTop: '1rem', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                            <p style={{ fontFamily: "'Playfair Display', serif", textTransform: 'capitalize', fontSize: '1rem', color: '#fff', opacity: 0.7, marginTop: '1rem', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                               {part.description}
                             </p>
                           )}
