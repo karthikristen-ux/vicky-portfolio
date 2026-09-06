@@ -201,87 +201,88 @@ export const Projects: React.FC = () => {
               </p>
             </div>
 
-            <div style={{ position: 'relative', width: '100%', height: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-              
-              {/* Left Arrow */}
-              <button 
-                onClick={prevProject}
-                style={{ position: 'absolute', left: '2rem', top: '50%', transform: 'translateY(-50%)', zIndex: 20, background: 'none', border: '1px solid rgba(229, 169, 60, 0.5)', color: '#fff', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s', fontSize: '1.2rem' }}
-                onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(229, 169, 60, 0.1)' }}
-                onMouseOut={(e) => { e.currentTarget.style.background = 'none' }}
-              >
-                &#10094;
-              </button>
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem' }}>
+              <div style={{ position: 'relative', width: '100%', height: '450px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {/* Left Arrow */}
+                <button 
+                  onClick={prevProject}
+                  style={{ position: 'absolute', left: '2rem', top: '50%', transform: 'translateY(-50%)', zIndex: 20, background: 'none', border: '1px solid rgba(229, 169, 60, 0.5)', color: '#fff', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s', fontSize: '1.2rem' }}
+                  onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(229, 169, 60, 0.1)' }}
+                  onMouseOut={(e) => { e.currentTarget.style.background = 'none' }}
+                >
+                  &#10094;
+                </button>
 
-              <div style={{ position: 'relative', width: '400px', height: '400px' }}>
-                {projects.map((p, idx) => {
-                  const style = getCardStyle(idx);
-                  return (
-                    <div
-                      key={p.id}
-                      onClick={() => handleProjectSelect(idx)}
-                      style={{
-                        ...style,
-                        width: '100%',
-                        height: '100%',
-                        cursor: 'pointer',
-                        borderRadius: '12px',
-                        overflow: 'hidden',
-                        background: 'rgba(20,20,20,0.8)',
-                        border: '1px solid rgba(229, 169, 60, 0.3)',
-                        boxShadow: idx === activeProjectIdx ? '0 0 30px rgba(229, 169, 60, 0.15)' : 'none',
-                      }}
-                    >
-                      <div style={{ 
-                        position: 'absolute', 
-                        top: 0, left: 0, right: 0, bottom: 0,
-                        backgroundImage: `url('${p.image}')`,
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'center',
-                        zIndex: -2,
-                        filter: idx === activeProjectIdx ? 'none' : 'grayscale(100%) opacity(0.6)'
-                      }} />
-                      {/* Orange Overlay for inactive to look like blueprint */}
-                      {idx !== activeProjectIdx && (
-                        <div style={{
-                          position: 'absolute',
+                <div style={{ position: 'relative', width: '400px', height: '400px' }}>
+                  {projects.map((p, idx) => {
+                    const style = getCardStyle(idx);
+                    return (
+                      <div
+                        key={p.id}
+                        onClick={() => handleProjectSelect(idx)}
+                        style={{
+                          ...style,
+                          width: '100%',
+                          height: '100%',
+                          cursor: 'pointer',
+                          borderRadius: '12px',
+                          overflow: 'hidden',
+                          background: 'rgba(20,20,20,0.8)',
+                          border: '1px solid rgba(229, 169, 60, 0.3)',
+                          boxShadow: idx === activeProjectIdx ? '0 0 30px rgba(229, 169, 60, 0.15)' : 'none',
+                        }}
+                      >
+                        <div style={{ 
+                          position: 'absolute', 
                           top: 0, left: 0, right: 0, bottom: 0,
-                          background: 'rgba(229, 169, 60, 0.1)',
-                          mixBlendMode: 'color',
-                          zIndex: -1
+                          backgroundImage: `url('${p.image}')`,
+                          backgroundSize: 'contain',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: 'center',
+                          zIndex: -2,
+                          filter: idx === activeProjectIdx ? 'none' : 'grayscale(100%) opacity(0.6)'
                         }} />
-                      )}
-                      
-                      {/* Gradient for text */}
-                      <div style={{ 
-                        position: 'absolute', 
-                        top: 0, left: 0, right: 0, bottom: 0,
-                        background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%)',
-                        zIndex: -1 
-                      }} />
-                    </div>
-                  );
-                })}
-              </div>
+                        {/* Orange Overlay for inactive to look like blueprint */}
+                        {idx !== activeProjectIdx && (
+                          <div style={{
+                            position: 'absolute',
+                            top: 0, left: 0, right: 0, bottom: 0,
+                            background: 'rgba(229, 169, 60, 0.1)',
+                            mixBlendMode: 'color',
+                            zIndex: -1
+                          }} />
+                        )}
+                        
+                        {/* Gradient for text */}
+                        <div style={{ 
+                          position: 'absolute', 
+                          top: 0, left: 0, right: 0, bottom: 0,
+                          background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%)',
+                          zIndex: -1 
+                        }} />
+                      </div>
+                    );
+                  })}
+                </div>
 
-              {/* Right Arrow */}
-              <button 
-                onClick={nextProject}
-                style={{ position: 'absolute', right: '2rem', top: '50%', transform: 'translateY(-50%)', zIndex: 20, background: 'none', border: '1px solid rgba(229, 169, 60, 0.5)', color: '#fff', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s', fontSize: '1.2rem' }}
-                onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(229, 169, 60, 0.1)' }}
-                onMouseOut={(e) => { e.currentTarget.style.background = 'none' }}
-              >
-                &#10095;
-              </button>
+                {/* Right Arrow */}
+                <button 
+                  onClick={nextProject}
+                  style={{ position: 'absolute', right: '2rem', top: '50%', transform: 'translateY(-50%)', zIndex: 20, background: 'none', border: '1px solid rgba(229, 169, 60, 0.5)', color: '#fff', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s', fontSize: '1.2rem' }}
+                  onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(229, 169, 60, 0.1)' }}
+                  onMouseOut={(e) => { e.currentTarget.style.background = 'none' }}
+                >
+                  &#10095;
+                </button>
+              </div>
               
               {/* Title below carousel */}
-              <div style={{ position: 'absolute', bottom: '1rem', left: 0, right: 0, textAlign: 'center', zIndex: 10 }}>
-                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', margin: 0, color: '#e5a93c', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 'normal' }}>
+              <div style={{ marginTop: '2rem', textAlign: 'center', zIndex: 10 }}>
+                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', margin: 0, color: '#fff', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 'normal' }}>
                   {projects[activeProjectIdx].title}
                 </h2>
-                <div style={{ width: '40px', height: '1px', background: 'rgba(229, 169, 60, 0.5)', margin: '0.5rem auto' }} />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.9rem', color: '#fff', display: 'block', opacity: 0.8, letterSpacing: '1px' }}>
+                <div style={{ width: '40px', height: '1px', background: 'rgba(255, 255, 255, 0.5)', margin: '0.5rem auto' }} />
+                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '0.9rem', color: '#fff', display: 'block', opacity: 0.8, letterSpacing: '1px' }}>
                   [{projects[activeProjectIdx].year}]
                 </span>
               </div>
@@ -364,10 +365,10 @@ export const Projects: React.FC = () => {
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                     <div style={{ background: 'rgba(229, 169, 60, 0.03)', padding: '2rem', borderRadius: '8px', border: '1px solid rgba(229, 169, 60, 0.1)' }}>
                       <h3 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>OVERVIEW</h3>
-                      <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Inter', sans-serif" }}>{proj.description}</p>
+                      <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Playfair Display', serif", textTransform: 'lowercase' }}>{proj.description}</p>
                       
                       <h3 style={{ fontFamily: "'Playfair Display', serif", marginTop: '2rem', marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>KEY FEATURES</h3>
-                      <ul style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', paddingLeft: '1.2rem', fontFamily: "'Inter', sans-serif" }}>
+                      <ul style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', paddingLeft: '1.2rem', fontFamily: "'Playfair Display', serif", textTransform: 'lowercase' }}>
                         {proj.features?.map((f, i) => (
                           <li key={i} style={{ marginBottom: '0.5rem' }}>{f}</li>
                         ))}
@@ -377,11 +378,11 @@ export const Projects: React.FC = () => {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                       <div style={{ background: 'rgba(229, 169, 60, 0.03)', padding: '2rem', borderRadius: '8px', border: '1px solid rgba(229, 169, 60, 0.1)' }}>
                         <h3 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>PROBLEM</h3>
-                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Inter', sans-serif" }}>{proj.problemStatement}</p>
+                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Playfair Display', serif", textTransform: 'lowercase' }}>{proj.problemStatement}</p>
                       </div>
                       <div style={{ background: 'rgba(229, 169, 60, 0.03)', padding: '2rem', borderRadius: '8px', border: '1px solid rgba(229, 169, 60, 0.1)' }}>
                         <h3 style={{ fontFamily: "'Playfair Display', serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem', fontWeight: 'normal', letterSpacing: '1px' }}>SOLUTION</h3>
-                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Inter', sans-serif" }}>{proj.solution}</p>
+                        <p style={{ color: '#fff', opacity: 0.8, lineHeight: '1.6', fontSize: '1.1rem', fontFamily: "'Playfair Display', serif", textTransform: 'lowercase' }}>{proj.solution}</p>
                       </div>
                     </div>
                   </div>
@@ -445,7 +446,7 @@ export const Projects: React.FC = () => {
                             {part.name}
                           </h3>
                           {part.description && (
-                            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '1rem', color: '#fff', opacity: 0.7, marginTop: '1rem', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                            <p style={{ fontFamily: "'Playfair Display', serif", textTransform: 'lowercase', fontSize: '1rem', color: '#fff', opacity: 0.7, marginTop: '1rem', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                               {part.description}
                             </p>
                           )}
