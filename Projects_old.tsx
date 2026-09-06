@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { STLViewer } from '../components/STLViewer';
 
-/* ───── project data ───── */
+/* ΓöÇΓöÇΓöÇΓöÇΓöÇ project data ΓöÇΓöÇΓöÇΓöÇΓöÇ */
 const projects = [
   {
     id: 'filament-loader',
@@ -18,7 +18,7 @@ const projects = [
     features: [
       'Custom scissor mechanism for automatic filament feeding',
       'Single compact chassis for 1 kg, 3 kg, and 5 kg spools',
-      '75% BOM cost reduction (18,000 INR → 4,500 INR)',
+      '75% BOM cost reduction (18,000 INR ΓåÆ 4,500 INR)',
       'Heat-set brass insert assemblies for durability',
       'Alternative motor integration for cost efficiency',
     ],
@@ -43,7 +43,7 @@ const projects = [
     tags: ['CREO', 'MODULAR-DESIGN', '3D-PRINT', 'ENCLOSURE'],
     image: '/images/projects/dryer/dryer cover.png',
     wideImage: '/images/projects/dryer/dryer cover.png',
-    problemStatement: 'Commercial filament dry boxes are expensive and lack modular expansion, while leaving spools exposed to ambient moisture ruins print quality — yet standard dry boxes cannot handle large multi-spool setups without bulky, costly hardware.',
+    problemStatement: 'Commercial filament dry boxes are expensive and lack modular expansion, while leaving spools exposed to ambient moisture ruins print quality ΓÇö yet standard dry boxes cannot handle large multi-spool setups without bulky, costly hardware.',
     solution: 'Designed the structural enclosure and modular architecture for a stackable dryer box in Creo, splitting the design into 8 3D-printable segments connected via robust dovetail and butt joints to bypass standard printer build-volume limits. Conceived and integrated the mechanical layout for a base-level air filtration system to neutralize plastic odors and a side-mounted filament cutter for streamlined multi-spool management.',
     features: [
       '8 modular 3D-printable segments with dovetail joints',
@@ -71,7 +71,7 @@ const projects = [
     image: '/images/projects/headset/cover image.png',
     wideImage: '/images/projects/headset/cover image.png',
     problemStatement: 'A popular Bluetooth headset kept breaking at the joint where the earcup turns. The original part failed repeatedly due to weak structural points in its commercial injection-molded design.',
-    solution: 'Engineered a functional replacement part with a material cost of under ₹10, preventing the need to discard a fully working commercial headset. Maintained exact internal mating dimensions while introducing slight cosmetic and visual modifications to the outer surface. If it ever breaks again, the user can just print a new one instantly instead of discarding the whole headset.',
+    solution: 'Engineered a functional replacement part with a material cost of under Γé╣10, preventing the need to discard a fully working commercial headset. Maintained exact internal mating dimensions while introducing slight cosmetic and visual modifications to the outer surface. If it ever breaks again, the user can just print a new one instantly instead of discarding the whole headset.',
     features: [
       'Measured with calipers to recreate exact dimensions.',
       'Material cost of under 10 rupees.',
@@ -107,68 +107,38 @@ const projects = [
 
 export const Projects: React.FC = () => {
   const [activeProjectIdx, setActiveProjectIdx] = useState(0);
+  const [activePartIdx, setActivePartIdx] = useState(0);
 
   const proj = projects[activeProjectIdx];
+
+  const handleNextProject = (idx: number) => {
+    setActiveProjectIdx(idx);
+    setActivePartIdx(0); // Reset part on project switch
+  };
 
   return (
     <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', color: '#fff', padding: '6rem 2rem 2rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
       
-      {/* Horizontal Project Carousel */}
-      <div style={{ 
-        display: 'flex', 
-        gap: '2rem', 
-        overflowX: 'auto', 
-        paddingBottom: '2rem',
-        marginBottom: '2rem',
-        scrollSnapType: 'x mandatory',
-        scrollbarWidth: 'none'
-      }}>
+      {/* Project Tabs Header */}
+      <div style={{ display: 'flex', gap: '1rem', marginBottom: '3rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem', overflowX: 'auto' }}>
         {projects.map((p, idx) => (
-          <div
+          <button
             key={p.id}
-            onClick={() => setActiveProjectIdx(idx)}
+            onClick={() => handleNextProject(idx)}
             style={{
-              minWidth: '350px',
-              maxWidth: '400px',
-              height: '500px',
-              flex: '0 0 auto',
-              scrollSnapAlign: 'start',
-              position: 'relative',
-              borderRadius: '24px',
-              overflow: 'hidden',
+              background: 'transparent',
+              border: 'none',
+              color: activeProjectIdx === idx ? '#fff' : '#666',
+              fontFamily: "'Fredoka', sans-serif",
+              fontSize: '1.1rem',
               cursor: 'pointer',
-              border: activeProjectIdx === idx ? '2px solid rgba(255,255,255,0.8)' : '2px solid rgba(255,255,255,0.1)',
-              transition: 'border 0.3s ease, transform 0.3s ease',
-              transform: activeProjectIdx === idx ? 'scale(1.02)' : 'scale(1)',
+              padding: '0.5rem 1rem',
+              transition: 'color 0.3s',
+              whiteSpace: 'nowrap'
             }}
           >
-            <div style={{ 
-              position: 'absolute', 
-              top: 0, left: 0, right: 0, bottom: 0,
-              backgroundImage: `url('${p.image}')`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              zIndex: -2 
-            }} />
-            <div style={{ 
-              position: 'absolute', 
-              top: 0, left: 0, right: 0, bottom: 0,
-              background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%)',
-              zIndex: -1 
-            }} />
-            
-            <div style={{ position: 'absolute', bottom: 0, left: 0, padding: '2rem' }}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', color: '#ccc', fontStyle: 'italic', marginBottom: '0.5rem', display: 'block' }}>
-                0{idx + 1} // {p.year}
-              </span>
-              <h2 style={{ fontFamily: "'Fredoka', sans-serif", fontSize: '2rem', margin: 0, color: '#fff', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: '1rem' }}>
-                {p.title}
-              </h2>
-              <p style={{ color: '#a3a3a3', fontSize: '0.9rem', lineHeight: '1.5', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                {p.description}
-              </p>
-            </div>
-          </div>
+            0{idx + 1} // {p.shortTitle}
+          </button>
         ))}
       </div>
 
@@ -179,80 +149,81 @@ export const Projects: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4 }}
-          style={{ display: 'flex', flexDirection: 'column', gap: '3rem', marginTop: '2rem' }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}
         >
-          {/* Zig-Zag Timeline for Parts */}
-          <div style={{ position: 'relative', margin: '4rem 0', display: 'flex', flexDirection: 'column', gap: '8rem' }}>
+          {/* Hero Section */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '800px' }}>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', color: '#888', fontStyle: 'italic' }}>
+              0{activeProjectIdx + 1}
+            </span>
+            <h1 style={{ fontFamily: "'Fredoka', sans-serif", fontSize: 'clamp(2.5rem, 5vw, 4rem)', margin: 0, lineHeight: 1.1, textTransform: 'uppercase' }}>
+              {proj.title}
+            </h1>
+            <p style={{ color: '#a3a3a3', fontSize: '1.1rem', lineHeight: '1.6', marginTop: '1rem' }}>
+              {proj.description}
+            </p>
+          </div>
+
+          {/* Viewer & Parts Layout */}
+          <div style={{ display: 'flex', gap: '2rem', height: '500px', width: '100%', background: 'rgba(20,20,20,0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', padding: '1rem', overflow: 'hidden' }}>
             
-            {/* The central spine line */}
+            {/* Vertical Parts Index */}
             <div style={{ 
-              position: 'absolute', 
-              left: '50%', 
-              transform: 'translateX(-50%)', 
-              top: 0, 
-              bottom: 0, 
-              width: '1px', 
-              borderLeft: '1px dashed rgba(255, 255, 255, 0.2)' 
-            }} />
-            
-            {proj.parts.map((part, idx) => (
-              <div key={idx} style={{ 
-                display: 'flex', 
-                flexDirection: idx % 2 === 0 ? 'row' : 'row-reverse', 
-                alignItems: 'center', 
-                gap: '4rem',
-                position: 'relative'
-              }}>
-                
-                {/* 3D Model side */}
-                <div style={{ flex: 1, display: 'flex', justifyContent: idx % 2 === 0 ? 'flex-end' : 'flex-start' }}>
-                  <div style={{ 
-                    width: '100%', 
-                    maxWidth: '450px', 
-                    height: '350px', 
-                    background: 'rgba(20,20,20,0.6)', 
-                    borderRadius: '24px', 
-                    overflow: 'hidden',
-                    border: '1px solid rgba(255,255,255,0.05)'
-                  }}>
-                    <STLViewer url={part.stlUrl} />
-                  </div>
-                </div>
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '1.5rem', 
+              padding: '1rem',
+              overflowY: 'auto',
+              borderRight: '1px solid rgba(255,255,255,0.08)'
+            }}>
+              {proj.parts.map((part, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActivePartIdx(idx)}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    color: activePartIdx === idx ? '#fff' : '#444',
+                    cursor: 'pointer',
+                    padding: '0.2rem',
+                    transition: 'color 0.3s',
+                    fontFamily: "'Playfair Display', serif",
+                    fontStyle: 'italic',
+                    fontSize: '1.2rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  0{idx + 1}
+                </button>
+              ))}
+            </div>
 
-                {/* Center Node on spine */}
-                <div style={{ 
-                  width: '12px', 
-                  height: '12px', 
-                  borderRadius: '50%', 
-                  background: '#fff', 
-                  zIndex: 10, 
-                  position: 'absolute', 
-                  left: '50%', 
-                  transform: 'translate(-50%, 0)',
-                  boxShadow: '0 0 10px rgba(255,255,255,0.5)'
-                }} />
-
-                {/* Text side */}
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: idx % 2 === 0 ? 'flex-start' : 'flex-end', textAlign: idx % 2 === 0 ? 'left' : 'right' }}>
-                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', color: '#a3a3a3', fontStyle: 'italic', marginBottom: '0.5rem' }}>
-                    0{idx + 1}
-                  </span>
-                  <h3 style={{ fontFamily: "'Fredoka', sans-serif", fontSize: '2.5rem', margin: 0, color: '#fff', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                    {part.name}
-                  </h3>
-                  
-                  {/* Subtle decorative line connecting to node */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    [idx % 2 === 0 ? 'left' : 'right']: '50%',
-                    width: 'calc(2rem)',
-                    borderTop: '1px dashed rgba(255, 255, 255, 0.2)',
-                    zIndex: 0
-                  }} />
-                </div>
+            {/* 3D Model Viewer with Part Name Overlay */}
+            <div style={{ flex: 1, position: 'relative', height: '100%', borderRadius: '16px', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: '20px', left: '20px', zIndex: 10 }}>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', color: '#a3a3a3', fontSize: '1rem' }}>
+                  0{activePartIdx + 1}
+                </span>
+                <h3 style={{ fontFamily: "'Fredoka', sans-serif", color: '#fff', fontSize: '1.8rem', margin: 0, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                  {proj.parts[activePartIdx].name}
+                </h3>
               </div>
-            ))}
+              <STLViewer url={proj.parts[activePartIdx].stlUrl} />
+            </div>
+          </div>
+
+          {/* Additional details */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <h3 style={{ fontFamily: "'Fredoka', sans-serif", marginBottom: '1rem', color: '#fff' }}>PROBLEM</h3>
+              <p style={{ color: '#a3a3a3', lineHeight: '1.6' }}>{proj.problemStatement}</p>
+            </div>
+            <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <h3 style={{ fontFamily: "'Fredoka', sans-serif", marginBottom: '1rem', color: '#fff' }}>SOLUTION</h3>
+              <p style={{ color: '#a3a3a3', lineHeight: '1.6' }}>{proj.solution}</p>
+            </div>
           </div>
 
         </motion.div>

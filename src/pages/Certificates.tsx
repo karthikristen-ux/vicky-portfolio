@@ -17,7 +17,7 @@ export const Certificates: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="crt-text" style={{ fontSize: 'clamp(2rem, 4vw, 4rem)' }}>CERTIFICATIONS & AWARDS</h1>
+        <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 4rem)', margin: 0, textTransform: 'uppercase', letterSpacing: '1px' }}>CERTIFICATIONS & AWARDS</h1>
         <p style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)', marginBottom: '3rem', color: '#ccc' }}>
           Official credentials and recognitions on file.
         </p>
