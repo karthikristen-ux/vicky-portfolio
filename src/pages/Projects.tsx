@@ -188,19 +188,52 @@ export const Projects: React.FC = () => {
                         className="visual-container"
                       >
                         <STLViewer url={proj.parts[activeParts[proj.id] || 0].stlUrl} />
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', padding: '12px', background: 'rgba(0,0,0,0.8)', borderTop: '1px solid rgba(255,140,0,0.2)' }}>
+                        <div 
+                          className="parts-scroll-container"
+                          style={{ 
+                            display: 'flex', 
+                            overflowX: 'auto', 
+                            gap: '12px', 
+                            padding: '16px 12px', 
+                            background: 'rgba(0,0,0,0.8)', 
+                            borderTop: '1px solid rgba(255,255,255,0.1)',
+                            whiteSpace: 'nowrap'
+                          }}
+                        >
+                          <style>
+                            {`
+                              .parts-scroll-container::-webkit-scrollbar {
+                                height: 3px;
+                              }
+                              .parts-scroll-container::-webkit-scrollbar-track {
+                                background: rgba(255,255,255,0.05);
+                              }
+                              .parts-scroll-container::-webkit-scrollbar-thumb {
+                                background: #a3a3a3;
+                                border-radius: 3px;
+                              }
+                              .parts-scroll-container::-webkit-scrollbar-thumb:hover {
+                                background: var(--tva-orange);
+                              }
+                            `}
+                          </style>
                           {proj.parts.map((part, pIdx) => (
                             <button
                               key={pIdx}
                               onClick={() => setPart(proj.id, pIdx)}
                               style={{
-                                background: (activeParts[proj.id] || 0) === pIdx ? 'rgba(255,140,0,0.2)' : 'transparent',
-                                border: (activeParts[proj.id] || 0) === pIdx ? '1px solid var(--tva-orange)' : '1px solid rgba(255,255,255,0.2)',
-                                color: (activeParts[proj.id] || 0) === pIdx ? 'var(--tva-orange)' : '#a3a3a3',
-                                padding: '4px 10px',
-                                fontSize: '0.65rem',
+                                background: (activeParts[proj.id] || 0) === pIdx ? 'rgba(255,255,255,0.1)' : 'transparent',
+                                border: 'none',
+                                color: (activeParts[proj.id] || 0) === pIdx ? '#fff' : '#888',
+                                padding: '6px 16px',
+                                fontSize: '0.8rem',
                                 cursor: 'pointer',
-                                fontFamily: 'var(--font-mono)'
+                                fontFamily: "'Playfair Display', serif",
+                                fontStyle: 'italic',
+                                letterSpacing: '0.5px',
+                                transition: 'all 0.3s ease',
+                                borderBottom: (activeParts[proj.id] || 0) === pIdx ? '1px solid #fff' : '1px solid transparent',
+                                flexShrink: 0
                               }}
                             >
                               {part.name}
