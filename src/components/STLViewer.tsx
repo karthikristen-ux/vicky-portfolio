@@ -11,7 +11,7 @@ const Model = ({ url }: { url: string }) => {
   const geom = useLoader(STLLoader, url);
   return (
     <mesh geometry={geom}>
-      <meshStandardMaterial color="#333333" roughness={0.3} metalness={0.7} />
+      <meshStandardMaterial color="#a0a0a0" roughness={0.3} metalness={0.7} />
     </mesh>
   );
 };

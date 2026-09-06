@@ -145,8 +145,8 @@ export const Projects: React.FC = () => {
                   transition={{ duration: 0.6 }}
                 >
                   <span className="project-node-label">{numLabel}</span>
-                  <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontStyle: 'italic', fontSize: '2.5rem', marginBottom: '1rem', textTransform: 'capitalize' }}>{proj.title.toLowerCase()}</h2>
-                  <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', lineHeight: '1.6', color: '#a3a3a3', fontWeight: 400 }}>{proj.description}</p>
+                  <h2>{proj.title}</h2>
+                  <p>{proj.description}</p>
                   
                   <div className="project-features">
                     {proj.features.map((f, i) => (
@@ -185,25 +185,26 @@ export const Projects: React.FC = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="visual-container"
+                        className="visual-container" style={{ display: 'flex', height: '400px', overflow: 'hidden' }}
                       >
                         <STLViewer url={proj.parts[activeParts[proj.id] || 0].stlUrl} />
                         <div 
                           className="parts-scroll-container"
                           style={{ 
                             display: 'flex', 
-                            overflowX: 'auto', 
+                            flexDirection: 'column',
+                            overflowY: 'auto', 
                             gap: '12px', 
-                            padding: '16px 12px', 
-                            background: 'rgba(0,0,0,0.8)', 
-                            borderTop: '1px solid rgba(255,255,255,0.1)',
-                            whiteSpace: 'nowrap'
+                            padding: '16px 20px', 
+                            background: 'rgba(0,0,0,0.9)', 
+                            borderLeft: '1px solid rgba(255,255,255,0.1)',
+                            minWidth: '180px'
                           }}
                         >
                           <style>
                             {`
                               .parts-scroll-container::-webkit-scrollbar {
-                                height: 3px;
+                                width: 3px;
                               }
                               .parts-scroll-container::-webkit-scrollbar-track {
                                 background: rgba(255,255,255,0.05);
@@ -232,7 +233,7 @@ export const Projects: React.FC = () => {
                                 fontStyle: 'italic',
                                 letterSpacing: '0.5px',
                                 transition: 'all 0.3s ease',
-                                borderBottom: (activeParts[proj.id] || 0) === pIdx ? '1px solid #fff' : '1px solid transparent',
+                                borderLeft: (activeParts[proj.id] || 0) === pIdx ? '2px solid #fff' : '2px solid transparent',
                                 flexShrink: 0
                               }}
                             >
