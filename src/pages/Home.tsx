@@ -62,8 +62,8 @@ export const Home: React.FC = () => {
               </h1>
             </div>
             
-            <p style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.25rem)', color: '#a3a3a3', lineHeight: '1.6', maxWidth: '85%', fontWeight: 300 }}>
-              Detail-oriented graduate with hands-on experience in <strong style={{color: '#fff', fontWeight: 500}}>PTC Creo, 3D printing, and mechanical design</strong>, 
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.1rem, 1.8vw, 1.25rem)', color: '#a3a3a3', lineHeight: '1.6', maxWidth: '85%', fontWeight: 400 }}>
+              Detail-oriented graduate with hands-on experience in <strong style={{color: '#fff', fontWeight: 600}}>PTC Creo, 3D printing, and mechanical design</strong>, 
               looking for a role to help build precision machinery, modular parts, and accurate 3D models.
             </p>
 

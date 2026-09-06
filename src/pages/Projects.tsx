@@ -145,8 +145,8 @@ export const Projects: React.FC = () => {
                   transition={{ duration: 0.6 }}
                 >
                   <span className="project-node-label">{numLabel}</span>
-                  <h2>{proj.title}</h2>
-                  <p>{proj.description}</p>
+                  <h2 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontStyle: 'italic', fontSize: '2.5rem', marginBottom: '1rem', textTransform: 'capitalize' }}>{proj.title.toLowerCase()}</h2>
+                  <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', lineHeight: '1.6', color: '#a3a3a3', fontWeight: 400 }}>{proj.description}</p>
                   
                   <div className="project-features">
                     {proj.features.map((f, i) => (
