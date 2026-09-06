@@ -2375,6 +2375,200 @@ nav.nav-collapsed .logo {
   }
 
   .ygg-btn {
+.ygg-node-left .ygg-dot-link {
+  flex-direction: row-reverse;
+}
+
+.ygg-dot {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ygg-dot-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tva-orange);
+  box-shadow: 0 0 8px var(--tva-orange), 0 0 16px var(--tva-orange-glow);
+  transition: all 0.3s ease;
+}
+
+.ygg-dot-ring {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 140, 0, 0.4);
+  animation: yggPulseRing 3s ease-in-out infinite;
+}
+
+@keyframes yggPulseRing {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.4); opacity: 0; }
+}
+
+.ygg-node:hover .ygg-dot-core {
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 15px var(--tva-orange), 0 0 30px var(--tva-orange-glow);
+}
+
+.ygg-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: var(--tva-orange);
+  opacity: 0.7;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 4px var(--tva-orange-glow);
+}
+
+.ygg-node:hover .ygg-label {
+  opacity: 1;
+}
+
+/* ---- Image popup on hover ---- */
+.ygg-popup {
+  position: absolute;
+  z-index: 100;
+  width: 220px;
+  border: 2px solid var(--tva-orange);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 0 25px rgba(255, 140, 0, 0.3), 0 15px 40px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+.ygg-node-left .ygg-popup {
+  right: 100%;
+  top: 50%;
+  transform-origin: right center;
+  margin-right: 15px;
+}
+
+.ygg-node-right .ygg-popup {
+  left: 100%;
+  top: 50%;
+  transform-origin: left center;
+  margin-left: 15px;
+}
+
+.ygg-popup img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.ygg-popup-label {
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: var(--tva-orange);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.9);
+  border-top: 1px solid rgba(255, 140, 0, 0.3);
+}
+
+/* ---- Bottom section ---- */
+.yggdrasil-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.yggdrasil-rune svg {
+  filter: drop-shadow(0 0 8px var(--tva-orange-glow));
+}
+
+.yggdrasil-name {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  letter-spacing: 12px;
+  color: var(--tva-orange);
+  margin: 0;
+  text-shadow: 0 0 10px var(--tva-orange-glow);
+  border: none;
+}
+
+.yggdrasil-buttons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.ygg-btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: var(--tva-orange);
+  text-decoration: none;
+  border: 1px solid rgba(255, 140, 0, 0.4);
+  padding: 6px 18px;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.ygg-btn:hover {
+  background: rgba(255, 140, 0, 0.1);
+  border-color: var(--tva-orange);
+  box-shadow: 0 0 12px rgba(255, 140, 0, 0.2);
+}
+
+/* ---- Mobile responsiveness ---- */
+@media (max-width: 768px) {
+  .yggdrasil-tree-wrapper {
+    max-width: 100%;
+  }
+
+  .ygg-label {
+    font-size: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  .ygg-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ygg-dot-core {
+    width: 6px;
+    height: 6px;
+  }
+
+  .ygg-dot-ring {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ygg-popup {
+    width: 150px;
+  }
+
+  .ygg-popup img {
+    height: 120px;
+  }
+
+  .yggdrasil-name {
+    font-size: 1rem;
+    letter-spacing: 8px;
+  }
+
+  .yggdrasil-buttons {
+    gap: 1rem;
+  }
+
+  .ygg-btn {
     font-size: 0.55rem;
     padding: 4px 12px;
   }
@@ -2399,3 +2593,218 @@ nav.nav-collapsed .logo {
   }
 }
 
+/* ==========================================================================
+   FLEEK NETWORK TIMELINE - PROJECTS PAGE
+   ========================================================================== */
+
+.projects-timeline-page {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.spine-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 0;
+}
+
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  padding: 3rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.marquee-track {
+  display: flex;
+  width: fit-content;
+  animation: marquee 30s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-track span {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.4);
+  padding-right: 2rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.project-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 80vh;
+  z-index: 2;
+}
+
+.project-section.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.project-content-wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Central Node UI */
+.spine-branch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spine-node-diamond {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transform: rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tva-bg);
+}
+
+.spine-node-diamond span {
+  transform: rotate(-45deg);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #fff;
+}
+
+.project-text {
+  width: 40%;
+  padding: 0 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-node-label {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: -1rem;
+}
+
+.project-text h2 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.project-text p {
+  color: #a3a3a3;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.project-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+}
+
+.feature-slash {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: bold;
+}
+
+.project-buttons {
+  margin-top: 1rem;
+}
+
+.tech-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tech-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+.project-visual {
+  width: 50%;
+  padding: 0 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(255,255,255,0.05));
+}
+
+@media (max-width: 900px) {
+  .spine-line, .spine-branch-container {
+    display: none;
+  }
+  
+  .project-section, .project-section.row-reverse {
+    flex-direction: column;
+    padding: 0 2rem;
+    gap: 4rem;
+  }
+  
+  .project-text, .project-visual {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .project-text h2 {
+    font-size: 2rem;
+  }
+}
