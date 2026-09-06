@@ -107,8 +107,14 @@ const projects = [
 
 export const Projects: React.FC = () => {
   const [activeProjectIdx, setActiveProjectIdx] = useState(0);
+  const [activeTab, setActiveTab] = useState<'description' | 'parts'>('parts');
 
   const proj = projects[activeProjectIdx];
+
+  const handleProjectSelect = (idx: number) => {
+    setActiveProjectIdx(idx);
+    setActiveTab('parts'); // Reset to parts tab when changing projects
+  };
 
   return (
     <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', color: '#fff', padding: '6rem 2rem 2rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
@@ -121,22 +127,23 @@ export const Projects: React.FC = () => {
         paddingBottom: '2rem',
         marginBottom: '2rem',
         scrollSnapType: 'x mandatory',
-        scrollbarWidth: 'none'
+        /* We leave the default scrollbar so users know there are more items */
       }}>
         {projects.map((p, idx) => (
           <div
             key={p.id}
-            onClick={() => setActiveProjectIdx(idx)}
+            onClick={() => handleProjectSelect(idx)}
             style={{
-              minWidth: '350px',
-              maxWidth: '400px',
-              height: '500px',
+              minWidth: '320px',
+              maxWidth: '350px',
+              height: '450px',
               flex: '0 0 auto',
               scrollSnapAlign: 'start',
               position: 'relative',
               borderRadius: '24px',
               overflow: 'hidden',
               cursor: 'pointer',
+              background: 'rgba(255,255,255,0.03)',
               border: activeProjectIdx === idx ? '2px solid rgba(255,255,255,0.8)' : '2px solid rgba(255,255,255,0.1)',
               transition: 'border 0.3s ease, transform 0.3s ease',
               transform: activeProjectIdx === idx ? 'scale(1.02)' : 'scale(1)',
@@ -144,9 +151,10 @@ export const Projects: React.FC = () => {
           >
             <div style={{ 
               position: 'absolute', 
-              top: 0, left: 0, right: 0, bottom: 0,
+              top: 0, left: 0, right: 0, bottom: '80px',
               backgroundImage: `url('${p.image}')`,
-              backgroundSize: 'cover',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center',
               zIndex: -2 
             }} />
@@ -157,32 +165,88 @@ export const Projects: React.FC = () => {
               zIndex: -1 
             }} />
             
-            <div style={{ position: 'absolute', bottom: 0, left: 0, padding: '2rem' }}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', color: '#ccc', fontStyle: 'italic', marginBottom: '0.5rem', display: 'block' }}>
-                0{idx + 1} // {p.year}
-              </span>
-              <h2 style={{ fontFamily: "'Fredoka', sans-serif", fontSize: '2rem', margin: 0, color: '#fff', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: '1rem' }}>
-                {p.title}
-              </h2>
-              <p style={{ color: '#a3a3a3', fontSize: '0.9rem', lineHeight: '1.5', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                {p.description}
-              </p>
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem', background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)' }}>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1rem', color: '#ccc', fontStyle: 'italic', display: 'block', marginBottom: '0.2rem' }}>
+                  0{idx + 1}
+                </span>
+                <h2 style={{ fontFamily: "'Fredoka', sans-serif", fontSize: '1.5rem', margin: 0, color: '#fff', textTransform: 'uppercase', lineHeight: 1.1 }}>
+                  {p.title}
+                </h2>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={proj.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.4 }}
-          style={{ display: 'flex', flexDirection: 'column', gap: '3rem', marginTop: '2rem' }}
-        >
-          {/* Zig-Zag Timeline for Parts */}
-          <div style={{ position: 'relative', margin: '4rem 0', display: 'flex', flexDirection: 'column', gap: '8rem' }}>
+        {/* Project Details Tabs */}
+        <div style={{ display: 'flex', gap: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '2rem', paddingBottom: '0.5rem' }}>
+          <button
+            onClick={() => setActiveTab('description')}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: activeTab === 'description' ? '#fff' : '#666',
+              fontFamily: "'Fredoka', sans-serif",
+              fontSize: '1.2rem',
+              cursor: 'pointer',
+              padding: '0.5rem 0',
+              transition: 'color 0.3s'
+            }}
+          >
+            DESCRIPTION
+          </button>
+          <button
+            onClick={() => setActiveTab('parts')}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: activeTab === 'parts' ? '#fff' : '#666',
+              fontFamily: "'Fredoka', sans-serif",
+              fontSize: '1.2rem',
+              cursor: 'pointer',
+              padding: '0.5rem 0',
+              transition: 'color 0.3s'
+            }}
+          >
+            PARTS
+          </button>
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${proj.id}-${activeTab}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}
+          >
+            {activeTab === 'description' ? (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <h3 style={{ fontFamily: "'Fredoka', sans-serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem' }}>OVERVIEW</h3>
+                  <p style={{ color: '#a3a3a3', lineHeight: '1.6', fontSize: '1.1rem' }}>{proj.description}</p>
+                  
+                  <h3 style={{ fontFamily: "'Fredoka', sans-serif", marginTop: '2rem', marginBottom: '1rem', color: '#fff', fontSize: '1.5rem' }}>KEY FEATURES</h3>
+                  <ul style={{ color: '#a3a3a3', lineHeight: '1.6', paddingLeft: '1.2rem' }}>
+                    {proj.features?.map((f, i) => (
+                      <li key={i} style={{ marginBottom: '0.5rem' }}>{f}</li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                  <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <h3 style={{ fontFamily: "'Fredoka', sans-serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem' }}>PROBLEM</h3>
+                    <p style={{ color: '#a3a3a3', lineHeight: '1.6', fontSize: '1.1rem' }}>{proj.problemStatement}</p>
+                  </div>
+                  <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <h3 style={{ fontFamily: "'Fredoka', sans-serif", marginBottom: '1rem', color: '#fff', fontSize: '1.5rem' }}>SOLUTION</h3>
+                    <p style={{ color: '#a3a3a3', lineHeight: '1.6', fontSize: '1.1rem' }}>{proj.solution}</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div style={{ position: 'relative', margin: '2rem 0 4rem 0', display: 'flex', flexDirection: 'column', gap: '8rem' }}>
             
             {/* The central spine line */}
             <div style={{ 
@@ -253,10 +317,10 @@ export const Projects: React.FC = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-};
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    );
+  };
