@@ -176,7 +176,7 @@ export const Projects: React.FC = () => {
               overflowY: 'auto',
               borderRight: '1px solid rgba(255,255,255,0.08)'
             }}>
-              {proj.parts.map((part, idx) => (
+              {proj.parts.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActivePartIdx(idx)}

@@ -19,31 +19,12 @@ const itemVariants: Variants = {
 
 export const Home: React.FC = () => {
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
-      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
     <div className="tva-container" style={{ position: 'relative' }}>
       
-      {/* Interactive Gradient Background */}
-      <div 
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          zIndex: -1,
-          background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(45, 75, 180, 0.15) 0%, rgba(0, 0, 0, 0) 50%)',
-          backgroundColor: 'transparent'
-        }}
-      />
+      {/* Interactive Gradient Background removed */}
 
       <motion.div 
         variants={containerVariants}
