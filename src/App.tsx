@@ -4,7 +4,6 @@ import { Home } from './pages/Home';
 import { Projects } from './pages/Projects';
 import { Certificates } from './pages/Certificates';
 import { MissMinutes } from './components/MissMinutes';
-import { Clock } from 'lucide-react';
 
 const Navigation = () => {
   const location = useLocation();
@@ -36,9 +35,8 @@ const Navigation = () => {
   return (
     <>
       <nav className={location.pathname !== '/' ? 'nav-collapsed' : ''} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 2rem' }}>
-        <Link to="/" className="logo" style={{ textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600 }}>
-          <Clock size={24} color="#fff" />
-          VENKAT ARCHIVE
+        <Link to="/" className="logo" style={{ textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', fontWeight: 700, fontFamily: "'Fredoka', sans-serif", fontSize: '1.8rem', letterSpacing: '-0.02em' }}>
+          V
         </Link>
 
         {/* Desktop nav links inside pill */}
