@@ -31,13 +31,13 @@ export const Home: React.FC = () => {
           {/* LEFT COLUMN: INTRO & PCB BOARD */}
           <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div>
-              <h1 className="crt-text" style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', margin: '0 0 0.5rem 0', lineHeight: 1.1 }}>T. KARTHIKEYAN</h1>
-              <h2 style={{ fontSize: 'clamp(1rem, 2vw, 1.4rem)', borderBottom: 'none', color: '#ff8c00', opacity: 0.9, letterSpacing: '4px', padding: 0, display: 'inline-block' }}>Electronics & Communication Engineering</h2>
+              <h1 className="crt-text" style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', margin: '0 0 0.5rem 0', lineHeight: 1.1 }}>T. VENKATARAMANAN</h1>
+              <h2 style={{ fontSize: 'clamp(1rem, 2vw, 1.4rem)', borderBottom: 'none', color: '#ff8c00', opacity: 0.9, letterSpacing: '4px', padding: 0, display: 'inline-block' }}>Mechatronics Engineering</h2>
             </div>
             
             <p style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.15rem)', color: '#ccc', lineHeight: '1.8', maxWidth: '90%' }}>
-              Welcome to my timeline. I am an aspiring engineer with a hyper-focus on <strong style={{color: '#fff'}}>Embedded Systems, IoT, and Software Development</strong>. 
-              Currently decoding the future at Sathyabama Institute of Science and Technology (2023 - 2027).
+              Detail-oriented Mechatronics Engineering graduate with hands-on experience in <strong style={{color: '#fff'}}>PTC Creo, 3D printing, and mechanical design</strong>, 
+              looking for a role to help build precision machinery, modular parts, and accurate 3D models. Currently at Sathyabama Institute of Science &amp; Technology (8.45 CGPA).
             </p>
 
             {/* PCB BOARD WITH IC CHIP TABS */}
@@ -57,7 +57,7 @@ export const Home: React.FC = () => {
             }}
           >
             <div style={{ fontSize: '0.9rem', marginBottom: '1.5rem', opacity: 0.8, letterSpacing: '2px', borderBottom: '1px solid var(--tva-orange)', paddingBottom: '0.8rem' }}>
-              SUBJECT_VARIANT_LOG :: T.K
+              SUBJECT_VARIANT_LOG :: T.V
             </div>
             <div style={{ 
               width: '100%', 
@@ -90,15 +90,15 @@ export const Home: React.FC = () => {
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px dashed var(--tva-orange)', paddingBottom: '0.5rem', marginBottom: '0.8rem' }}>
                 <span>[ ID ]</span>
-                <strong>VARIANT-18</strong>
+                <strong>VARIANT-TV</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px dashed var(--tva-orange)', paddingBottom: '0.5rem', marginBottom: '0.8rem' }}>
                 <span>[ STATUS ]</span>
-                <span style={{ color: '#ff4d00' }}>ESCAPED FROM 2023 TIMELINE</span>
+                <span style={{ color: '#ff4d00' }}>MECHATRONICS GRADUATE</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.5rem' }}>
                 <span>[ LOCATION ]</span>
-                <strong>CHENNAI, INDIA</strong>
+                <strong>CHENNAI, TAMILNADU</strong>
               </div>
             </div>
           </motion.div>
@@ -112,10 +112,10 @@ export const Home: React.FC = () => {
               <Cpu size={24} color="#ff8c00" /> CORE ARCHITECTURE
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem', color: '#ccc' }}>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> Python, C, Java</li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> Embedded Systems & Microcontrollers</li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> Internet of Things (IoT)</li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> Circuit Design & PCB Design</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> PTC Creo Parametric &amp; TDD</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> 3D Printing (PLA, PETG, ABS, TPU)</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> CAD Modeling &amp; Reverse Engineering</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> NPD &amp; Custom Solutions Design</li>
             </ul>
           </motion.div>
 
@@ -124,10 +124,10 @@ export const Home: React.FC = () => {
               <Terminal size={24} color="#ff8c00" /> DEPLOYMENT TOOLS
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem', color: '#ccc' }}>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> Arduino IDE & Proteus</li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> MATLAB</li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> Visual Studio Code</li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> Git & GitHub</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> PTC Creo / SolidWorks</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> Bambu Studio (Slicer Software)</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> Bambu Lab A1, P1S Printers</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: '#ff8c00' }}>▹</span> 2D/3D Drafting &amp; Tolerancing</li>
             </ul>
           </motion.div>
 

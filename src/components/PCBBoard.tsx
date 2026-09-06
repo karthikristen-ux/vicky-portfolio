@@ -6,7 +6,7 @@ const icChips = [
   {
     label: 'GMAIL',
     icon: Mail,
-    href: 'mailto:karthikeyant1885@gmail.com',
+    href: 'mailto:tv6540@gmail.com',
     target: undefined as string | undefined,
     pinLabel: 'COM-01',
   },
@@ -34,7 +34,7 @@ const icChips = [
   {
     label: 'WHATSAPP',
     icon: MessageCircle,
-    href: 'https://wa.me/918110823730',
+    href: 'https://wa.me/916382882734',
     target: '_blank',
     pinLabel: 'WAP-05',
   },

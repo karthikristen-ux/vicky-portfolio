@@ -7,23 +7,23 @@ const pageConfig: Record<string, { facts: string[]; mood: string }> = {
   '/': {
     mood: 'wave',
     facts: [
-      "Hey there, y'all! Welcome to Karthikeyan's timeline!",
-      "He's studying Electronics and Communication Engineering!",
-      "Ooh! He knows Python, C, Java, and IoT!",
-      "Need a circuit designed? He's your guy!",
-      "He's at Sathyabama Institute of Science and Technology!",
+      "Hey there, y'all! Welcome to Venkataramanan's timeline!",
+      "He's studying Mechatronics Engineering at Sathyabama IST!",
+      "Ooh! He's a whiz with PTC Creo and 3D printing!",
+      "Need a precision part designed? He's your guy!",
+      "He scored a perfect 10 CGPA in 10th grade!",
       "Click me again for another fun fact, sugar!"
     ]
   },
   '/projects': {
     mood: 'excited',
     facts: [
-      "Look at all these projects! 1st place for a Farming Project!",
-      "Watch out! He built a Mobile Flood Water Transporter!",
-      "He interned at Shell doing fancy IoT Web Projects!",
-      "Click the code buttons to see the repositories!",
-      "The RAWP project monitors water quality with real sensors!",
-      "That farming system runs on Bluetooth and Wi-Fi, sugar!",
+      "Look at all these projects! He redesigned the Infinity Flow S1!",
+      "Watch out! He cut costs by 75% on the filament loader design!",
+      "He designed a stackable filament dryer with dovetail joints!",
+      "Click the cards to see full project details!",
+      "The Perseverance Crawling Robot got published at two conferences!",
+      "He works with Bambu Lab printers — A1 and P1S, sugar!",
       "← Swipe on mobile to view more projects! →"
     ]
   },
@@ -31,9 +31,9 @@ const pageConfig: Record<string, { facts: string[]; mood: string }> = {
     mood: 'proud',
     facts: [
       "Wowee! Look at all these credentials!",
-      "He's got a State-Level Expo win from VIT Vellore!",
-      "A District-Level Hackathon runner up! Impressive!",
-      "All these certificates prove he's not a variant!",
+      "He's got published research papers, sugar!",
+      "A Rajya Puraskar from Bharat Scouts & Guides! Impressive!",
+      "All these credentials prove he's not just any variant!",
       "Each one is a verified timeline event!",
       "The TVA approves of these credentials, sugar!"
     ]
@@ -44,7 +44,7 @@ const pageConfig: Record<string, { facts: string[]; mood: string }> = {
       "Ooh, look at these captures from across the timeline!",
       "He's got a real eye for photography, sugar!",
       "These image logs are perfectly aesthetic!",
-      "When he's not coding, he's snapping pictures!",
+      "When he's not designing in Creo, he's snapping pictures!",
       "Click the Instagram link to see the full archive!",
       "Every picture tells a story of the timeline!"
     ]

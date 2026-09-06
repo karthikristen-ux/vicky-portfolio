@@ -6,12 +6,12 @@ import { motion } from 'framer-motion';
 const timelineEvents = [
   {
     id: "46465189=703",
-    date: "-04.15.2021",
-    yearLabel: "10th - 2021",
+    date: "-03.15.2017",
+    yearLabel: "10th - 2017",
     time: "08:39:42",
-    location: "10th Grade (SGPS)",
-    description: "Foundational timeline established.",
-    missMinutesFact: "In 2021, he crushed his 10th grade at SGPS with a solid 88 percent! A perfect start to the timeline!",
+    location: "10th Grade (Maharishi Vidhya Mandhir)",
+    description: "Foundational timeline established. Secured 10 CGPA.",
+    missMinutesFact: "In 2017, he aced his 10th grade at Maharishi Vidhya Mandhir with a perfect 10 CGPA! That's a flawless start to the timeline!",
     type: "origin",
     cx: 180,
     cy: 130,
@@ -21,12 +21,12 @@ const timelineEvents = [
   },
   {
     id: "46462044=006",
-    date: "-05.20.2023",
-    yearLabel: "12th - 2023",
+    date: "-05.20.2019",
+    yearLabel: "12th - 2019",
     time: "10:09:34",
-    location: "12th Grade (SGPS)",
-    description: "Higher secondary education completed.",
-    missMinutesFact: "Timeline updated to 2023! He finished 12th grade at SGPS scoring 82 percent! The foundation is set!",
+    location: "12th Grade (Maharishi Vidhya Mandhir)",
+    description: "Higher secondary education completed with 76.6%.",
+    missMinutesFact: "Timeline updated to 2019! He finished 12th grade at Maharishi Vidhya Mandhir scoring 76.6 percent! Onward and upward!",
     type: "nexus",
     cx: 350,
     cy: 130,
@@ -37,11 +37,11 @@ const timelineEvents = [
   {
     id: "46443278=421",
     date: "-08.10.2023",
-    yearLabel: "B.E. ECE - 2023-2027",
+    yearLabel: "B.E. Mechatronics - 2023",
     time: "08:02:13",
-    location: "B.E. ECE (Sathyabama)",
-    description: "Undergraduate Engineering Degree.",
-    missMinutesFact: "The big nexus event! B.E. in Electronics and Communication at Sathyabama! Currently holding a brilliant 8.29 CGPA!",
+    location: "B.E. Mechatronics (Sathyabama IST)",
+    description: "Undergraduate Engineering Degree. 8.45 CGPA.",
+    missMinutesFact: "The big nexus event! B.E. in Mechatronics at Sathyabama Institute of Science and Technology! Holding a brilliant 8.45 CGPA!",
     type: "nexus",
     cx: 550,
     cy: 130,
@@ -51,12 +51,12 @@ const timelineEvents = [
   },
   {
     id: "46420987=051",
-    date: "-07.01.2025",
-    yearLabel: "Port Intern - 2025",
+    date: "-01.01.2025",
+    yearLabel: "NPD Trainee - Alinks 3D",
     time: "14:21:03",
-    location: "Chennai Port Intern",
-    description: "In-Plant Training – Electrical Systems.",
-    missMinutesFact: "2025 training at Chennai Port Authority! Observing huge 33kV power distributions and transformers!",
+    location: "NPD Trainee at Alinks 3D",
+    description: "New Product Development — End-to-End NPD, Reverse Engineering, Custom Enclosures & 3D Printing.",
+    missMinutesFact: "A crucial branch in the timeline! NPD Trainee at Alinks 3D! Designing products from scratch in Creo, managing 3D print parameters, and building custom PCB enclosures!",
     type: "branch",
     cx: 750,
     cy: 130,
@@ -64,21 +64,6 @@ const timelineEvents = [
     textX: 810,
     textY: 35
   },
-  {
-    id: "46492982=140",
-    date: "-08.20.2025",
-    yearLabel: "AICTE Intern - 2025",
-    time: "09:45:00",
-    location: "Shell Internship",
-    description: "AICTE App Dev (IoT Based Project).",
-    missMinutesFact: "Also in 2025, a crucial branch: AICTE App Dev internship at Shell! Building real IoT projects!",
-    type: "branch",
-    cx: 750, // Same starting point as Port intern to create the fork
-    cy: 130,
-    branchPath: "M 750 130 Q 780 130, 830 210", // Down-right fork
-    textX: 830,
-    textY: 230
-  }
 ];
 
 export const TemPadTimeline: React.FC = () => {

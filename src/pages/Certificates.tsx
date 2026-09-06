@@ -3,13 +3,10 @@ import { motion } from 'framer-motion';
 import { Award } from 'lucide-react';
 
 const certificates = [
-  { name: 'State-Level Expo – VIT Vellore (1st place for One-Man Farming Project)', date: '2019' },
-  { name: 'District-Level Expo – SRM University (3rd place for agriculture automation)', date: '2019' },
-  { name: 'NPTEL – Introduction to Internet of Things (Elite certification, 80%)', date: 'Jul–Oct 2025' },
-  { name: 'MATLAB Onramp Certifications', date: 'N/A' },
-  { name: 'ML in IoT & Wi-Fi 6 Workshop – ISTE, Sathyabama IST', date: '2024' },
-  { name: 'In-Plant Training – Chennai Port Authority', date: '2025' },
-  { name: 'AICTE Industry-Oriented Virtual Internship – Shell', date: '2025' },
+  { name: 'Review Paper: "Design and Fabrication of Perseverance Crawling Robot – A Review" at ICAARS conference, PSG College of Technology; communicated to AIP Journal', date: 'Dec 2022' },
+  { name: 'Research Presentation: "Perseverance Crawling Robot" at ICDTM Conference, SASTRA University', date: 'Apr 2023' },
+  { name: 'Rajya Puraskar – Bharat Scouts & Guides (signed by Governor)', date: 'N/A' },
+  { name: 'Certificate of Merit for securing 10 CGPA in CBSE Secondary School Examination', date: '2017' },
 ];
 
 export const Certificates: React.FC = () => {
