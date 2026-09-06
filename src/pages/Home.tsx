@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { Cpu, Terminal } from 'lucide-react';
@@ -19,28 +19,32 @@ const itemVariants: Variants = {
 };
 
 export const Home: React.FC = () => {
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <div className="tva-container" style={{ position: 'relative' }}>
       
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
+      {/* Interactive Gradient Background */}
+      <div 
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           width: '100vw',
           height: '100vh',
-          objectFit: 'cover',
           zIndex: -1,
-          opacity: 0.8
+          background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(45, 75, 180, 0.15) 0%, rgba(0, 0, 0, 0) 50%)',
+          backgroundColor: '#050505'
         }}
-      >
-        <source src="/images/hero video.mp4" type="video/mp4" />
-      </video>
+      />
 
       <motion.div 
         variants={containerVariants}
@@ -55,13 +59,13 @@ export const Home: React.FC = () => {
                 MECHATRONICS ENGINEERING GRADUATE
               </span>
               <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', margin: 0, lineHeight: 1.1, fontWeight: 500, color: '#ffffff' }}>
-                T. Venkataramanan
+                Venkataramanan
               </h1>
             </div>
             
             <p style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.25rem)', color: '#a3a3a3', lineHeight: '1.6', maxWidth: '85%', fontWeight: 300 }}>
               Detail-oriented graduate with hands-on experience in <strong style={{color: '#fff', fontWeight: 500}}>PTC Creo, 3D printing, and mechanical design</strong>, 
-              looking for a role to help build precision machinery, modular parts, and accurate 3D models. Graduated from Sathyabama Institute of Science &amp; Technology (8.45 CGPA).
+              looking for a role to help build precision machinery, modular parts, and accurate 3D models.
             </p>
 
             <div className="glass-input-cta" style={{ marginTop: '1rem' }}>
