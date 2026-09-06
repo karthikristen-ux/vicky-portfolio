@@ -37,17 +37,6 @@ const pageConfig: Record<string, { facts: string[]; mood: string }> = {
       "Each one is a verified timeline event!",
       "The TVA approves of these credentials, sugar!"
     ]
-  },
-  '/hobbies': {
-    mood: 'excited',
-    facts: [
-      "Ooh, look at these captures from across the timeline!",
-      "He's got a real eye for photography, sugar!",
-      "These image logs are perfectly aesthetic!",
-      "When he's not designing in Creo, he's snapping pictures!",
-      "Click the Instagram link to see the full archive!",
-      "Every picture tells a story of the timeline!"
-    ]
   }
 };
 
@@ -383,10 +372,7 @@ export const MissMinutes: React.FC = () => {
     }
   };
 
-  // Do not render on Hobbies page (she's in the background animation there)
-  if (location.pathname === '/hobbies') {
-    return null;
-  }
+
 
   return (
     <motion.div

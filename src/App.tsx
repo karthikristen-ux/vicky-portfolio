@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import { Home } from './pages/Home';
 import { Projects } from './pages/Projects';
 import { Certificates } from './pages/Certificates';
-import { Hobbies } from './pages/Hobbies';
 import { MissMinutes } from './components/MissMinutes';
 import { Clock } from 'lucide-react';
 
@@ -32,7 +31,6 @@ const Navigation = () => {
     { path: '/', label: '[ TIMELINE ]' },
     { path: '/projects', label: '[ PROJECTS ]' },
     { path: '/certificates', label: '[ CREDENTIALS ]' },
-    { path: '/hobbies', label: '[ HOBBIES ]' },
   ];
 
   return (
@@ -105,7 +103,6 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/certificates" element={<Certificates />} />
-        <Route path="/hobbies" element={<Hobbies />} />
       </Routes>
       <MissMinutes />
     </Router>
