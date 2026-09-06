@@ -38,7 +38,7 @@ const Navigation = () => {
       <nav className={location.pathname !== '/' ? 'nav-collapsed' : ''}>
         <Link to="/" className="logo" style={{ textDecoration: 'none', color: 'var(--tva-orange)' }}>
           <Clock size={32} color="var(--tva-orange)" />
-          TVA ARCHIVES
+          VENKAT ARCHIVE
         </Link>
 
         {/* Desktop nav links */}

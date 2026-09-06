@@ -199,7 +199,7 @@ export const Projects: React.FC = () => {
                 onClick={isActive ? () => { setDetailProject(project); setActivePartIndex(0); } : () => setActiveIndex(index)}
               >
                 <div className="carousel-item-inner">
-                  <div style={{ backgroundImage: `url('${project.image}')`, backgroundSize: 'cover', backgroundPosition: 'center', width: '100%', height: '220px', borderRadius: '8px' }} />
+                  <div style={{ backgroundImage: `url('${project.image}')`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', width: '100%', height: '220px', borderRadius: '8px' }} />
                   <div className="carousel-item-title" style={{ marginTop: '1rem' }}>{project.shortTitle}</div>
                   <div className="carousel-item-year">[{project.year}]</div>
                   {isActive && (
