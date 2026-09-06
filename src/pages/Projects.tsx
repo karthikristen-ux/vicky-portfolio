@@ -68,8 +68,8 @@ const projects = [
     description: 'I reverse-engineered a broken Bluetooth headset swivel joint to provide a low-cost, on-demand replacement. The original part kept failing, so I measured it with calipers and recreated it in CAD with a slight cosmetic update.',
     tags: ['REVERSE-ENGINEERING', 'CAD', '3D-PRINTING', 'REPAIR'],
     github: '#',
-    image: '/images/projects/headset/cover image.jpeg',
-    wideImage: '/images/projects/headset/cover image.jpeg',
+    image: '/images/projects/headset/cover image.png',
+    wideImage: '/images/projects/headset/cover image.png',
     problemStatement: 'A popular Bluetooth headset kept breaking at the joint where the earcup turns. The original part failed repeatedly due to weak structural points in its commercial injection-molded design.',
     solution: 'Engineered a functional replacement part with a material cost of under ₹10, preventing the need to discard a fully working commercial headset. Maintained exact internal mating dimensions while introducing slight cosmetic and visual modifications to the outer surface. If it ever breaks again, the user can just print a new one instantly instead of discarding the whole headset.',
     features: [
@@ -79,7 +79,7 @@ const projects = [
       'Slight cosmetic and visual modifications to outer surface.'
     ],
     parts: [
-      { name: "Headset Swivel Joint (Boat)", description: "The reverse-engineered replacement joint. Robust infill pattern makes it stronger than the original.", stl: "/images/projects/headset/part/boat.stl" }
+      { name: "Headset Swivel Joint (Boat)", description: "The reverse-engineered replacement joint. Robust infill pattern makes it stronger than the original.", stl: "/images/projects/headset/part/bth.stl" }
     ]
   }
 ];
