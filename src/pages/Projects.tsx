@@ -299,7 +299,7 @@ export const Projects: React.FC = () => {
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '3rem', borderBottom: '1px solid rgba(229, 169, 60, 0.2)', paddingBottom: '1.5rem' }}>
               <div>
-                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '1rem', color: '#fff', opacity: 0.8, marginBottom: '0.5rem', display: 'block', letterSpacing: '1px' }}>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1rem', color: '#fff', opacity: 0.8, marginBottom: '0.5rem', display: 'block', letterSpacing: '1px' }}>
                   FILE NO. {activeProjectIdx + 1} // [{proj.year}]
                 </span>
                 <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.5rem', margin: 0, color: '#fff', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 'normal' }}>
@@ -308,7 +308,7 @@ export const Projects: React.FC = () => {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                style={{ background: 'transparent', border: '1px solid #e5a93c', color: '#fff', padding: '0.5rem 1.5rem', fontFamily: "'Inter', sans-serif", letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '4px', cursor: 'pointer', transition: 'all 0.3s', marginTop: '0.5rem' }}
+                style={{ background: 'transparent', border: '1px solid #e5a93c', color: '#fff', padding: '0.5rem 1.5rem', fontFamily: "'Playfair Display', serif", letterSpacing: '1px', textTransform: 'uppercase', borderRadius: '4px', cursor: 'pointer', transition: 'all 0.3s', marginTop: '0.5rem' }}
                 onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(229, 169, 60, 0.1)' }}
                 onMouseOut={(e) => { e.currentTarget.style.background = 'transparent' }}
               >
@@ -324,7 +324,7 @@ export const Projects: React.FC = () => {
                   background: 'none',
                   border: 'none',
                   color: activeTab === 'description' ? '#e5a93c' : 'rgba(229, 169, 60, 0.5)',
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Playfair Display', serif",
                   fontSize: '1.2rem',
                   cursor: 'pointer',
                   padding: '0.5rem 0',
@@ -340,7 +340,7 @@ export const Projects: React.FC = () => {
                   background: 'none',
                   border: 'none',
                   color: activeTab === 'parts' ? '#e5a93c' : 'rgba(229, 169, 60, 0.5)',
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Playfair Display', serif",
                   fontSize: '1.2rem',
                   cursor: 'pointer',
                   padding: '0.5rem 0',
@@ -439,7 +439,7 @@ export const Projects: React.FC = () => {
 
                         {/* Text side */}
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: idx % 2 === 0 ? 'flex-start' : 'flex-end', textAlign: idx % 2 === 0 ? 'left' : 'right' }}>
-                          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '1rem', color: '#fff', opacity: 0.8, marginBottom: '0.5rem', letterSpacing: '1px' }}>
+                          <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1rem', color: '#fff', opacity: 0.8, marginBottom: '0.5rem', letterSpacing: '1px' }}>
                             PART NO. 0{idx + 1}
                           </span>
                           <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', margin: 0, color: '#fff', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 'normal' }}>

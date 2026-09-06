@@ -95,7 +95,7 @@ export const Home: React.FC = () => {
 
         {/* TVA TEMPAD TIMELINE */}
         <motion.div variants={itemVariants}>
-          <h3 className="crt-text" style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', marginBottom: '-1rem', textAlign: 'center', letterSpacing: '8px' }}>EXPERIENCE LOG</h3>
+          <h3 className="crt-text" style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', marginBottom: '-1rem', textAlign: 'center', letterSpacing: '8px' }}>EXPERIENCE LOG</h3>
           <TemPadTimeline />
         </motion.div>
 

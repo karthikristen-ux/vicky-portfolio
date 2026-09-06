@@ -54,6 +54,7 @@ const Navigation = () => {
               key={item.path}
               to={item.path}
               className={location.pathname === item.path ? 'active' : ''}
+              style={{ fontFamily: "'Playfair Display', serif" }}
             >
               {item.label}
             </Link>
