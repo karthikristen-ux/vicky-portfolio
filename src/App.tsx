@@ -3,11 +3,19 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import { Home } from './pages/Home';
 import { Projects } from './pages/Projects';
 import { Certificates } from './pages/Certificates';
-import { MissMinutes } from './components/MissMinutes';
 
 const Navigation = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close menu on route change
   useEffect(() => {
@@ -34,8 +42,8 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={location.pathname !== '/' ? 'nav-collapsed' : ''} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 2rem' }}>
-        <Link to="/" className="logo" style={{ textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', fontWeight: 700, fontFamily: "'Fredoka', sans-serif", fontSize: '1.8rem', letterSpacing: '-0.02em' }}>
+      <nav className={location.pathname !== '/' ? 'nav-collapsed' : ''} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 2rem', position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, transition: 'all 0.3s ease', background: scrolled ? 'rgba(5,5,5,0.85)' : 'transparent', backdropFilter: scrolled ? 'blur(12px)' : 'none', borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : '1px solid transparent' }}>
+        <Link to="/" className="logo" style={{ textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', fontWeight: 700, fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '2.5rem' }}>
           V
         </Link>
 
@@ -105,7 +113,6 @@ const App: React.FC = () => {
         <Route path="/projects" element={<Projects />} />
         <Route path="/certificates" element={<Certificates />} />
       </Routes>
-      <MissMinutes />
     </Router>
   );
 };

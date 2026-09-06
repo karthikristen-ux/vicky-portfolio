@@ -105,161 +105,125 @@ const projects = [
   }
 ];
 
-const MarqueeDivider = () => (
-  <div className="marquee-container">
-    <div className="marquee-track">
-      <span>//////// MECHANICAL DESIGN //////// 3D PRINTING //////// PTC CREO //////// RAPID PROTOTYPING //////// REVERSE ENGINEERING //////// MECHANICAL DESIGN //////// 3D PRINTING //////// PTC CREO //////// RAPID PROTOTYPING //////// REVERSE ENGINEERING </span>
-      <span>//////// MECHANICAL DESIGN //////// 3D PRINTING //////// PTC CREO //////// RAPID PROTOTYPING //////// REVERSE ENGINEERING //////// MECHANICAL DESIGN //////// 3D PRINTING //////// PTC CREO //////// RAPID PROTOTYPING //////// REVERSE ENGINEERING </span>
-    </div>
-  </div>
-);
-
 export const Projects: React.FC = () => {
-  const [activeModel, setActiveModel] = useState<string | null>(null);
-  const [activeParts, setActiveParts] = useState<{ [key: string]: number }>({});
+  const [activeProjectIdx, setActiveProjectIdx] = useState(0);
+  const [activePartIdx, setActivePartIdx] = useState(0);
 
-  const setPart = (projId: string, partIdx: number) => {
-    setActiveParts(prev => ({ ...prev, [projId]: partIdx }));
+  const proj = projects[activeProjectIdx];
+
+  const handleNextProject = (idx: number) => {
+    setActiveProjectIdx(idx);
+    setActivePartIdx(0); // Reset part on project switch
   };
 
   return (
-    <div className="projects-timeline-page">
-      <div className="spine-line"></div>
+    <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', color: '#fff', padding: '6rem 2rem 2rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      
+      {/* Project Tabs Header */}
+      <div style={{ display: 'flex', gap: '1rem', marginBottom: '3rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem', overflowX: 'auto' }}>
+        {projects.map((p, idx) => (
+          <button
+            key={p.id}
+            onClick={() => handleNextProject(idx)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: activeProjectIdx === idx ? '#fff' : '#666',
+              fontFamily: "'Fredoka', sans-serif",
+              fontSize: '1.1rem',
+              cursor: 'pointer',
+              padding: '0.5rem 1rem',
+              transition: 'color 0.3s',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            0{idx + 1} // {p.shortTitle}
+          </button>
+        ))}
+      </div>
 
-      {projects.map((proj, idx) => {
-        const isEven = idx % 2 === 1;
-        const numLabel = `0${idx + 1}`;
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={proj.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4 }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}
+        >
+          {/* Hero Section */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '800px' }}>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', color: '#888', fontStyle: 'italic' }}>
+              0{activeProjectIdx + 1}
+            </span>
+            <h1 style={{ fontFamily: "'Fredoka', sans-serif", fontSize: 'clamp(2.5rem, 5vw, 4rem)', margin: 0, lineHeight: 1.1, textTransform: 'uppercase' }}>
+              {proj.title}
+            </h1>
+            <p style={{ color: '#a3a3a3', fontSize: '1.1rem', lineHeight: '1.6', marginTop: '1rem' }}>
+              {proj.description}
+            </p>
+          </div>
 
-        return (
-          <React.Fragment key={proj.id}>
-            {idx > 0 && <MarqueeDivider />}
+          {/* Viewer & Parts Layout */}
+          <div style={{ display: 'flex', gap: '2rem', height: '500px', width: '100%', background: 'rgba(20,20,20,0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', padding: '1rem', overflow: 'hidden' }}>
             
-            <section className={`project-section ${isEven ? 'row-reverse' : ''}`}>
-              
-              <div className="project-content-wrapper">
-                <motion.div 
-                  className="project-text"
-                  initial={{ opacity: 0, x: isEven ? 40 : -40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6 }}
+            {/* Vertical Parts Index */}
+            <div style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '1rem', 
+              minWidth: '200px', 
+              padding: '1rem',
+              overflowY: 'auto',
+              borderRight: '1px solid rgba(255,255,255,0.08)'
+            }}>
+              <h3 style={{ fontFamily: "'Fredoka', sans-serif", color: '#fff', fontSize: '1.2rem', marginBottom: '1rem' }}>PARTS</h3>
+              {proj.parts.map((part, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActivePartIdx(idx)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    background: 'transparent',
+                    border: 'none',
+                    color: activePartIdx === idx ? '#fff' : '#666',
+                    textAlign: 'left',
+                    cursor: 'pointer',
+                    padding: '0.5rem',
+                    transition: 'color 0.3s',
+                    fontFamily: "'Playfair Display', serif",
+                    fontStyle: 'italic',
+                    fontSize: '1.1rem'
+                  }}
                 >
-                  <span className="project-node-label">{numLabel}</span>
-                  <h2>{proj.title}</h2>
-                  <p>{proj.description}</p>
-                  
-                  <div className="project-features">
-                    {proj.features.map((f, i) => (
-                      <div className="feature-item" key={i}>
-                        <span className="feature-slash">/</span> {f}
-                      </div>
-                    ))}
-                  </div>
+                  <span style={{ fontSize: '0.9rem', fontFamily: 'monospace', opacity: 0.7 }}>0{idx + 1}</span>
+                  {part.name}
+                </button>
+              ))}
+            </div>
 
-                  <div className="project-buttons">
-                    <button className="tech-btn" onClick={() => setActiveModel(activeModel === proj.id ? null : proj.id)}>
-                      {activeModel === proj.id ? 'CLOSE 3D VIEWER' : 'VIEW 3D MODEL'}
-                    </button>
-                  </div>
-                </motion.div>
+            {/* 3D Model Viewer */}
+            <div style={{ flex: 1, position: 'relative', height: '100%', borderRadius: '16px', overflow: 'hidden' }}>
+              <STLViewer url={proj.parts[activePartIdx].stlUrl} />
+            </div>
+          </div>
 
-                {/* Center spine branch for desktop */}
-                <div className="spine-branch-container">
-                  <div className="spine-branch-line"></div>
-                  <div className="spine-node-diamond">
-                    <span>{numLabel}</span>
-                  </div>
-                </div>
+          {/* Additional details */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <h3 style={{ fontFamily: "'Fredoka', sans-serif", marginBottom: '1rem', color: '#fff' }}>PROBLEM</h3>
+              <p style={{ color: '#a3a3a3', lineHeight: '1.6' }}>{proj.problemStatement}</p>
+            </div>
+            <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <h3 style={{ fontFamily: "'Fredoka', sans-serif", marginBottom: '1rem', color: '#fff' }}>SOLUTION</h3>
+              <p style={{ color: '#a3a3a3', lineHeight: '1.6' }}>{proj.solution}</p>
+            </div>
+          </div>
 
-                <motion.div 
-                  className="project-visual"
-                  initial={{ opacity: 0, x: isEven ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  <AnimatePresence mode="wait">
-                    {activeModel === proj.id ? (
-                      <motion.div 
-                        key="3d"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="visual-container" style={{ display: 'flex', height: '400px', overflow: 'hidden' }}
-                      >
-                        <STLViewer url={proj.parts[activeParts[proj.id] || 0].stlUrl} />
-                        <div 
-                          className="parts-scroll-container"
-                          style={{ 
-                            display: 'flex', 
-                            flexDirection: 'column',
-                            overflowY: 'auto', 
-                            gap: '12px', 
-                            padding: '16px 20px', 
-                            background: 'rgba(0,0,0,0.9)', 
-                            borderLeft: '1px solid rgba(255,255,255,0.1)',
-                            minWidth: '180px'
-                          }}
-                        >
-                          <style>
-                            {`
-                              .parts-scroll-container::-webkit-scrollbar {
-                                width: 3px;
-                              }
-                              .parts-scroll-container::-webkit-scrollbar-track {
-                                background: rgba(255,255,255,0.05);
-                              }
-                              .parts-scroll-container::-webkit-scrollbar-thumb {
-                                background: #a3a3a3;
-                                border-radius: 3px;
-                              }
-                              .parts-scroll-container::-webkit-scrollbar-thumb:hover {
-                                background: var(--tva-orange);
-                              }
-                            `}
-                          </style>
-                          {proj.parts.map((part, pIdx) => (
-                            <button
-                              key={pIdx}
-                              onClick={() => setPart(proj.id, pIdx)}
-                              style={{
-                                background: (activeParts[proj.id] || 0) === pIdx ? 'rgba(255,255,255,0.1)' : 'transparent',
-                                border: 'none',
-                                color: (activeParts[proj.id] || 0) === pIdx ? '#fff' : '#888',
-                                padding: '6px 16px',
-                                fontSize: '0.8rem',
-                                cursor: 'pointer',
-                                fontFamily: "'Playfair Display', serif",
-                                fontStyle: 'italic',
-                                letterSpacing: '0.5px',
-                                transition: 'all 0.3s ease',
-                                borderLeft: (activeParts[proj.id] || 0) === pIdx ? '2px solid #fff' : '2px solid transparent',
-                                flexShrink: 0
-                              }}
-                            >
-                              {part.name}
-                            </button>
-                          ))}
-                        </div>
-                      </motion.div>
-                    ) : (
-                      <motion.div 
-                        key="img"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="visual-container image-container"
-                      >
-                        <img src={proj.wideImage} alt={proj.title} />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              </div>
-            </section>
-          </React.Fragment>
-        );
-      })}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };

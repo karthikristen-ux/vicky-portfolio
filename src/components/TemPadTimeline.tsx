@@ -1,318 +1,126 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-// Updated Timeline Data Structure with explicit visual coordinates to match the drawing perfectly
-// Updated Timeline Data Structure with explicit visual coordinates to match the drawing perfectly
-const timelineEvents = [
+const timelineData = [
   {
-    id: "46465189=703",
-    date: "-03.15.2017",
-    yearLabel: "10th - 2017",
-    time: "08:39:42",
-    location: "10th Grade (Maharishi Vidhya Mandhir)",
-    description: "Foundational timeline established. Secured 10 CGPA.",
-    missMinutesFact: "In 2017, he aced his 10th grade at Maharishi Vidhya Mandhir with a perfect 10 CGPA! That's a flawless start to the timeline!",
-    type: "origin",
-    cx: 180,
-    cy: 130,
-    branchPath: "M 180 130 Q 210 130, 250 50", // Up-right
-    textX: 250,
-    textY: 35
+    id: '01',
+    title: '10th Grade',
+    subtitle: 'Maharishi Vidhya Mandhir',
+    date: '03.15.2017',
+    description: 'Foundation in science and mathematics, developing an early interest in engineering and mechanics.',
+    align: 'left'
   },
   {
-    id: "46462044=006",
-    date: "-05.20.2019",
-    yearLabel: "12th - 2019",
-    time: "10:09:34",
-    location: "12th Grade (Maharishi Vidhya Mandhir)",
-    description: "Higher secondary education completed with 76.6%.",
-    missMinutesFact: "Timeline updated to 2019! He finished 12th grade at Maharishi Vidhya Mandhir scoring 76.6 percent! Onward and upward!",
-    type: "nexus",
-    cx: 350,
-    cy: 130,
-    branchPath: "M 350 130 Q 400 130, 480 210", // Down-right
-    textX: 480,
-    textY: 230
+    id: '02',
+    title: '12th Grade',
+    subtitle: 'Maharishi Vidhya Mandhir',
+    date: '05.20.2019',
+    description: 'Advanced studies in physics and mathematics, preparing for a career in mechatronics and product design.',
+    align: 'right'
   },
   {
-    id: "46443278=421",
-    date: "-08.10.2023",
-    yearLabel: "B.E. Mechatronics - 2023",
-    time: "08:02:13",
-    location: "B.E. Mechatronics (Sathyabama IST)",
-    description: "Undergraduate Engineering Degree. 8.45 CGPA.",
-    missMinutesFact: "The big nexus event! B.E. in Mechatronics at Sathyabama Institute of Science and Technology! Holding a brilliant 8.45 CGPA!",
-    type: "nexus",
-    cx: 550,
-    cy: 130,
-    branchPath: "M 550 130 Q 580 130, 640 50", // Up-right
-    textX: 640,
-    textY: 35
+    id: '03',
+    title: 'B.E. Mechatronics',
+    subtitle: 'Sathyabama IST',
+    date: '08.10.2023',
+    description: 'Comprehensive engineering degree focusing on mechanical systems, electronics, and control theory.',
+    align: 'left'
   },
   {
-    id: "46420987=051",
-    date: "-01.01.2025",
-    yearLabel: "NPD Trainee - Alinks 3D",
-    time: "14:21:03",
-    location: "NPD Trainee at Alinks 3D",
-    description: "New Product Development — End-to-End NPD, Reverse Engineering, Custom Enclosures & 3D Printing.",
-    missMinutesFact: "A crucial branch in the timeline! NPD Trainee at Alinks 3D! Designing products from scratch in Creo, managing 3D print parameters, and building custom PCB enclosures!",
-    type: "branch",
-    cx: 750,
-    cy: 130,
-    branchPath: "M 750 130 Q 770 130, 810 50", // Up-right fork
-    textX: 810,
-    textY: 35
-  },
+    id: '04',
+    title: 'NPD Trainee',
+    subtitle: 'Alinks 3D',
+    date: '01.01.2025',
+    description: 'Hands-on experience in New Product Development, 3D printing, CAD modeling, and reverse engineering.',
+    align: 'right'
+  }
 ];
 
 export const TemPadTimeline: React.FC = () => {
-  const [activeEventIndex, setActiveEventIndex] = useState<number | null>(null);
-
-  const orangeGlow = "var(--tva-orange)";
-  const redGlow = "#ff4d00";
-  const dimOrange = "rgba(255, 140, 0, 0.4)";
-
-  // Dispatch custom event for Miss Minutes
-  const handleDotClick = (fact: string) => {
-    window.dispatchEvent(new CustomEvent('miss-minutes-speak', { detail: fact }));
-  };
+  useEffect(() => {
+    // Just to ensure page starts at top
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div style={{ width: '100%', display: 'flex', justifyContent: 'center', margin: '4rem 0' }}>
+    <div style={{ width: '100%', maxWidth: '900px', margin: '0 auto', padding: '4rem 2rem', color: '#fff', position: 'relative' }}>
       
-      {/* FLOATING CURVED MONITOR SHELL */}
-      <motion.div 
-        className="tempad-monitor"
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, type: 'spring' }}
-        style={{
-          width: '100%',
-          maxWidth: '900px',
-          backgroundColor: '#111',
-          borderRadius: '50% / 15%', 
-          padding: '20px 40px',
-          borderTop: '10px solid #a38560',
-          borderBottom: '10px solid #222',
-          borderLeft: '4px solid #333',
-          borderRight: '4px solid #333',
-          boxShadow: '0 30px 60px rgba(0,0,0,0.9), inset 0 20px 30px rgba(0,0,0,0.8)',
-          position: 'relative'
-        }}
-      >
-        <div style={{
-          position: 'absolute',
-          top: '-30px', left: '50%', transform: 'translateX(-50%)',
-          width: '150px', height: '20px',
-          backgroundColor: '#a38560', borderRadius: '10px 10px 0 0',
-          zIndex: 0
-        }} />
-        
-        {/* TEMPAD SCREEN */}
-        <div className="tempad-screen" style={{
-          position: 'relative',
-          width: '100%',
-          backgroundColor: '#000000', 
-          borderRadius: '45% / 12%', 
-          padding: '2px',
-          overflow: 'hidden',
-          boxShadow: 'inset 0 0 60px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.8)',
-          zIndex: 10
-        }}>
-          
-          <div style={{
-            position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 10, pointerEvents: 'none',
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 40%, rgba(255,255,255,0.02) 100%)'
-          }} />
-          <div style={{
-            position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 9, pointerEvents: 'none',
-            background: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%)', // Lightened scanlines
-            backgroundSize: '100% 4px',
-          }} />
+      {/* Central Line */}
+      <div style={{ 
+        position: 'absolute', 
+        left: '50%', 
+        top: '6rem', 
+        bottom: '6rem', 
+        width: '1px', 
+        background: 'linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.2) 10%, rgba(255,255,255,0.2) 90%, rgba(255,255,255,0))',
+        transform: 'translateX(-50%)',
+        zIndex: 0
+      }} />
 
-          {/* SCREEN CONTENT CONTAINER */}
-          <div className="tempad-screen-content" style={{
-            position: 'relative',
-            zIndex: 5,
-            padding: '3rem 2rem',
-            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-            color: orangeGlow,
-            textShadow: `0 0 8px ${orangeGlow}`,
-          }}>
-            
-            {/* SACRED TIMELINE GRAPH */}
-            <div className="tempad-graph-container" style={{ 
-              position: 'relative', 
-              height: '260px', 
-              marginBottom: '2rem', 
-              backgroundColor: 'transparent',
-              borderRadius: '40% / 15%',
-              overflow: 'hidden'
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6rem', position: 'relative', zIndex: 1 }}>
+        {timelineData.map((item, index) => (
+          <motion.div 
+            key={item.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            style={{ 
+              display: 'flex', 
+              justifyContent: item.align === 'left' ? 'flex-start' : 'flex-end',
+              width: '100%',
+              position: 'relative'
+            }}
+          >
+            {/* Connecting horizontal line to center */}
+            <div style={{
+              position: 'absolute',
+              top: '24px',
+              [item.align === 'left' ? 'right' : 'left']: '50%',
+              width: 'calc(50% - 40px)',
+              height: '1px',
+              borderTop: '1px dashed rgba(255,255,255,0.2)',
+              zIndex: 0
+            }} />
+
+            {/* Node circle on the center line */}
+            <div style={{
+              position: 'absolute',
+              top: '20px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '10px',
+              height: '10px',
+              borderRadius: '50%',
+              background: '#fff',
+              boxShadow: '0 0 10px rgba(255,255,255,0.5)',
+              zIndex: 2
+            }} />
+
+            {/* Content card */}
+            <div style={{ 
+              width: 'calc(50% - 40px)', 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '0.5rem',
+              textAlign: item.align === 'left' ? 'right' : 'left'
             }}>
-              <div style={{
-                position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-                backgroundImage: `linear-gradient(${dimOrange} 1px, transparent 1px), linear-gradient(90deg, ${dimOrange} 1px, transparent 1px)`,
-                backgroundSize: '30px 15px', 
-                opacity: 0.05 
-              }} />
-
-              <svg width="100%" height="100%" viewBox="0 0 900 260" preserveAspectRatio="xMidYMid meet" style={{ position: 'relative', zIndex: 2 }}>
-                <defs>
-                  <filter id="strongGlow">
-                    <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
-                    <feMerge>
-                      <feMergeNode in="coloredBlur"/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
-                  <filter id="branchGlow">
-                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                    <feMerge>
-                      <feMergeNode in="coloredBlur"/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
-                </defs>
-
-                {/* Main Sacred Timeline (Slightly wavy/organic) */}
-                <motion.path 
-                  d="M 20 135 Q 200 125, 450 135 T 880 135" 
-                  fill="none"
-                  stroke={orangeGlow} 
-                  strokeWidth="8" 
-                  strokeLinecap="round"
-                  filter="url(#strongGlow)" 
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  transition={{ duration: 2, ease: "easeInOut" }}
-                />
-
-                {/* Branches branching OFF the main line perfectly */}
-                {timelineEvents.map((event, i) => (
-                  <g key={`branch-${event.id}`}>
-                    <motion.path 
-                      d={event.branchPath}
-                      fill="none"
-                      stroke={orangeGlow}
-                      strokeWidth="6"
-                      strokeLinecap="round"
-                      opacity={0.9}
-                      filter="url(#branchGlow)"
-                      initial={{ pathLength: 0 }}
-                      whileInView={{ pathLength: 1 }}
-                      transition={{ duration: 1, delay: 1 + (i * 0.2) }}
-                    />
-                  </g>
-                ))}
-
-                {/* Nodes and Labels */}
-                {timelineEvents.map((event, i) => (
-                  <g key={`node-${event.id}`}>
-                    {/* Outer Pulse/Highlight when active */}
-                    {activeEventIndex === i && (
-                      <circle cx={event.cx} cy={event.cy} r="18" fill="none" stroke="#fff" strokeWidth="2" opacity="0.6" filter="url(#strongGlow)">
-                        <animate attributeName="r" values="10;25;10" dur="1.2s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="0.8;0;0.8" dur="1.2s" repeatCount="indefinite" />
-                      </circle>
-                    )}
-
-                    {/* Clickable Node point on the main line */}
-                    <motion.circle 
-                      cx={event.cx} 
-                      cy={event.cy} 
-                      r="10" 
-                      fill={activeEventIndex === i ? "#fff" : "#ffb347"} 
-                      filter="url(#strongGlow)"
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ duration: 0.3, delay: 0.5 + (i * 0.2) }}
-                      onMouseEnter={() => setActiveEventIndex(i)}
-                      onMouseLeave={() => setActiveEventIndex(null)}
-                      onClick={() => handleDotClick(event.missMinutesFact)}
-                      style={{ cursor: 'pointer' }}
-                    />
-
-                    {/* Year Label - Large, readable, and positioned perfectly at the end of the branches */}
-                    <motion.text
-                      x={event.textX}
-                      y={event.textY}
-                      fill="#ffffff"
-                      fontSize="14"
-                      fontWeight="bold"
-                      textAnchor="middle"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 1 + (i * 0.2) }}
-                      style={{ 
-                        pointerEvents: 'none',
-                        textShadow: '0px 3px 6px rgba(0,0,0,1), 0px 0px 10px rgba(0,0,0,1)' // Extreme contrast shadow
-                      }}
-                    >
-                      {event.yearLabel}
-                    </motion.text>
-                  </g>
-                ))}
-              </svg>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1rem', color: '#a3a3a3', fontStyle: 'italic' }}>
+                {item.id} &mdash; {item.date}
+              </span>
+              <h3 style={{ fontFamily: "'Fredoka', sans-serif", fontSize: '2rem', margin: 0, color: '#fff', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                {item.title}
+              </h3>
+              <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 500, color: '#e0e0e0', letterSpacing: '0.5px' }}>
+                {item.subtitle}
+              </h4>
+              <p style={{ margin: '1rem 0 0 0', color: '#888', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                {item.description}
+              </p>
             </div>
-
-            {/* EVENT LOG TABLE */}
-            <div style={{ borderTop: `1px solid ${dimOrange}`, padding: '1rem 0 0 0' }}>
-              <table className="tempad-table" style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
-                <thead>
-                  <tr style={{ borderBottom: `1px solid ${dimOrange}`, color: redGlow }}>
-                    <th style={{ padding: '0.5rem', fontWeight: 'bold' }}>EVENT#</th>
-                    <th style={{ padding: '0.5rem', fontWeight: 'bold' }}>DATE</th>
-                    <th style={{ padding: '0.5rem', fontWeight: 'bold' }}>LOCATION / TITLE</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {timelineEvents.map((event, i) => (
-                    <motion.tr 
-                      key={event.id}
-                      onMouseEnter={() => setActiveEventIndex(i)}
-                      onMouseLeave={() => setActiveEventIndex(null)}
-                      onClick={() => handleDotClick(event.missMinutesFact)} // Trigger Miss Minutes on row click too
-                      style={{ 
-                        backgroundColor: activeEventIndex === i ? 'rgba(255, 140, 0, 0.15)' : 'transparent',
-                        cursor: 'pointer',
-                        transition: 'background-color 0.2s'
-                      }}
-                    >
-                      <td className="tempad-event-id" style={{ padding: '0.5rem' }}>{event.id}</td>
-                      <td style={{ padding: '0.5rem' }}>{event.date}</td>
-                      <td style={{ padding: '0.5rem', display: 'flex', flexDirection: 'column' }}>
-                        <span style={{ color: '#fff' }}>{event.location}</span>
-                        {activeEventIndex === i && (
-                          <motion.span 
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 0.9, height: 'auto' }}
-                            style={{ fontSize: '0.75rem', marginTop: '4px', color: '#ffb347' }}
-                          >
-                            {event.description}
-                          </motion.span>
-                        )}
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* FOOTER MENU */}
-            <div className="tempad-footer-menu" style={{ display: 'flex', gap: '1.5rem', marginTop: '2rem', fontSize: '0.8rem', opacity: 0.8, justifyContent: 'center' }}>
-              <div style={{ fontWeight: 'bold', color: '#fff', textShadow: `0 0 5px ${redGlow}` }}>TVA LOG</div>
-              <div style={{ cursor: 'pointer' }}>FILE</div>
-              <div style={{ cursor: 'pointer' }}>EDIT</div>
-              <div style={{ cursor: 'pointer' }}>VIEW</div>
-              <div style={{ cursor: 'pointer' }}>MODE</div>
-              <div style={{ cursor: 'pointer' }}>HELP</div>
-            </div>
-
-          </div>
-        </div>
-      </motion.div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };

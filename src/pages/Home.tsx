@@ -57,7 +57,7 @@ export const Home: React.FC = () => {
               <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '0.9rem', fontStyle: 'italic', fontWeight: 400, letterSpacing: '1px', color: '#a3a3a3' }}>
                 Mechatronics Engineering Graduate
               </span>
-              <h1 style={{ fontFamily: "'Fredoka', sans-serif", fontSize: 'clamp(3.5rem, 8vw, 6rem)', margin: 0, lineHeight: 1.1, fontWeight: 700, color: '#ffffff', letterSpacing: '-0.02em', textTransform: 'uppercase' }}>
+              <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(3.5rem, 8vw, 6rem)', margin: 0, lineHeight: 1.1, fontWeight: 700, color: '#ffffff', letterSpacing: '-0.02em', textTransform: 'uppercase' }}>
                 Venkataramanan
               </h1>
             </div>
