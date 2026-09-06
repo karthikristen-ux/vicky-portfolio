@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { Cpu, Terminal } from 'lucide-react';
 import { TemPadTimeline } from '../components/TemPadTimeline';
-import { PCBBoard } from '../components/PCBBoard';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
