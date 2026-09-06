@@ -54,10 +54,10 @@ export const Home: React.FC = () => {
           
           <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', width: '100%', maxWidth: '800px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-              <span style={{ fontSize: '0.8rem', fontWeight: 600, letterSpacing: '2px', color: '#a3a3a3' }}>
-                MECHATRONICS ENGINEERING GRADUATE
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '0.9rem', fontStyle: 'italic', fontWeight: 400, letterSpacing: '1px', color: '#a3a3a3' }}>
+                Mechatronics Engineering Graduate
               </span>
-              <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', margin: 0, lineHeight: 1.1, fontWeight: 500, color: '#ffffff' }}>
+              <h1 style={{ fontFamily: "'Fredoka', sans-serif", fontSize: 'clamp(3.5rem, 8vw, 6rem)', margin: 0, lineHeight: 1.1, fontWeight: 700, color: '#ffffff', letterSpacing: '-0.02em', textTransform: 'uppercase' }}>
                 Venkataramanan
               </h1>
             </div>
