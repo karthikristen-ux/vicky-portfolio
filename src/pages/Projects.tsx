@@ -62,6 +62,25 @@ const projects = [
       'Slight cosmetic and visual modifications to outer surface.'
     ],
     stlUrl: '/images/projects/headset/part/bth.stl'
+  },
+  {
+    id: 'solar-wiper',
+    title: 'SOLAR PANEL WIPER',
+    shortTitle: 'SOLAR WIPER',
+    year: '2025',
+    description: 'Reinforced 3D printed solar wiper design that replaces generic weak plastic wipers, built to withstand high manual push forces.',
+    tags: ['3D-PRINTING', 'STRUCTURAL-DESIGN', 'CAD'],
+    image: '/images/projects/solar/solar cover.png',
+    wideImage: '/images/projects/solar/solar cover.png',
+    problemStatement: 'Generic plastic solar wipers are structurally weak and easily break under manual push forces.',
+    solution: 'I reinforced the high-stress structural walls and upgraded the exterior styling for a modern look. The entire reinforced structure is 3D printed with strong infill settings to ensure long-term durability. It features a rigid handle connection that handles high manual force without snapping.',
+    features: [
+      'Reinforced high-stress structural walls',
+      'Upgraded exterior styling for a modern look',
+      '3D printed with strong infill settings for long-term durability',
+      'Rigid handle connection that handles high manual force'
+    ],
+    stlUrl: '/images/projects/solar/part/solar-wiper.stl'
   }
 ];
 
