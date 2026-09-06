@@ -26,81 +26,21 @@ export const Home: React.FC = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="home-hero-grid">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', margin: '4rem 0', gap: '2rem' }}>
           
-          {/* LEFT COLUMN: INTRO & PCB BOARD */}
-          <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', width: '100%', maxWidth: '800px' }}>
             <div>
-              <h1 className="crt-text" style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', margin: '0 0 0.5rem 0', lineHeight: 1.1 }}>T. VENKATARAMANAN</h1>
-              <h2 style={{ fontSize: 'clamp(1rem, 2vw, 1.4rem)', borderBottom: 'none', color: '#ff8c00', opacity: 0.9, letterSpacing: '4px', padding: 0, display: 'inline-block' }}>Mechatronics Engineering</h2>
+              <h1 className="crt-text" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', margin: '0 0 0.5rem 0', lineHeight: 1.1 }}>T. VENKATARAMANAN</h1>
+              <h2 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)', borderBottom: 'none', color: '#ff8c00', opacity: 0.9, letterSpacing: '4px', padding: 0, display: 'inline-block' }}>Mechatronics Engineering</h2>
             </div>
             
-            <p style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.15rem)', color: '#ccc', lineHeight: '1.8', maxWidth: '90%' }}>
+            <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.25rem)', color: '#ccc', lineHeight: '1.8', maxWidth: '100%' }}>
               Detail-oriented Mechatronics Engineering graduate with hands-on experience in <strong style={{color: '#fff'}}>PTC Creo, 3D printing, and mechanical design</strong>, 
               looking for a role to help build precision machinery, modular parts, and accurate 3D models. Currently at Sathyabama Institute of Science &amp; Technology (8.45 CGPA).
             </p>
 
-            {/* PCB BOARD WITH IC CHIP TABS */}
+            {/* PCB BOARD WITH CONTACT LINKS */}
             <PCBBoard />
-          </motion.div>
-
-          {/* RIGHT COLUMN: ASCII ART VARIANT LOG */}
-          <motion.div 
-            variants={itemVariants}
-            className="tva-card" 
-            style={{ 
-              display: 'flex', 
-              flexDirection: 'column',
-              padding: '1.5rem', 
-              textAlign: 'center',
-              width: '100%',
-            }}
-          >
-            <div style={{ fontSize: '0.9rem', marginBottom: '1.5rem', opacity: 0.8, letterSpacing: '2px', borderBottom: '1px solid var(--tva-orange)', paddingBottom: '0.8rem' }}>
-              SUBJECT_VARIANT_LOG :: T.V
-            </div>
-            <div style={{ 
-              width: '100%', 
-              borderRadius: '8px', 
-              overflow: 'hidden',
-              boxShadow: '0 0 15px rgba(255, 140, 0, 0.2)',
-              backgroundColor: '#000',
-              marginBottom: '1.5rem'
-            }}>
-              <img 
-                src="/images/ascii_variant.png" 
-                alt="ASCII Variant Portrait" 
-                style={{ 
-                  width: '100%', 
-                  height: 'auto', 
-                  display: 'block',
-                  filter: 'contrast(1.2) sepia(1) hue-rotate(350deg) saturate(3)' 
-                }} 
-              />
-            </div>
-
-            {/* VARIANT DETAILS */}
-            <div style={{ 
-              textAlign: 'left', 
-              fontFamily: "'Courier New', Courier, monospace", 
-              fontSize: '0.95rem', 
-              lineHeight: '1.6',
-              color: 'var(--tva-orange)',
-              textShadow: '0 0 5px var(--tva-orange-glow)'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px dashed var(--tva-orange)', paddingBottom: '0.5rem', marginBottom: '0.8rem' }}>
-                <span>[ ID ]</span>
-                <strong>VARIANT-TV</strong>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px dashed var(--tva-orange)', paddingBottom: '0.5rem', marginBottom: '0.8rem' }}>
-                <span>[ STATUS ]</span>
-                <span style={{ color: '#ff4d00' }}>MECHATRONICS GRADUATE</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '0.5rem' }}>
-                <span>[ LOCATION ]</span>
-                <strong>CHENNAI, TAMILNADU</strong>
-              </div>
-            </div>
           </motion.div>
 
         </div>
