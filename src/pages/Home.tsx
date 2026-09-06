@@ -20,27 +20,57 @@ const itemVariants: Variants = {
 
 export const Home: React.FC = () => {
   return (
-    <div className="tva-container">
+    <div className="tva-container" style={{ position: 'relative' }}>
+      
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          objectFit: 'cover',
+          zIndex: -1,
+          opacity: 0.8
+        }}
+      >
+        <source src="/images/hero video.mp4" type="video/mp4" />
+      </video>
+
       <motion.div 
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', minHeight: '75vh', margin: '0 0 4rem 0', gap: '2rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', minHeight: '85vh', margin: '0 0 4rem 0', gap: '2rem', paddingTop: '4rem' }}>
           
           <motion.div variants={itemVariants} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', width: '100%', maxWidth: '800px' }}>
-            <div>
-              <h1 className="crt-text" style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', margin: '0 0 0.5rem 0', lineHeight: 1.1 }}>T. VENKATARAMANAN</h1>
-              <h2 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)', borderBottom: 'none', color: '#ff8c00', opacity: 0.9, letterSpacing: '4px', padding: 0, display: 'inline-block' }}>Mechatronics Engineering</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+              <span style={{ fontSize: '0.8rem', fontWeight: 600, letterSpacing: '2px', color: '#a3a3a3' }}>
+                MECHATRONICS ENGINEERING GRADUATE
+              </span>
+              <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', margin: 0, lineHeight: 1.1, fontWeight: 500, color: '#ffffff' }}>
+                T. Venkataramanan
+              </h1>
             </div>
             
-            <p style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.25rem)', color: '#ccc', lineHeight: '1.8', maxWidth: '100%' }}>
-              Detail-oriented Mechatronics Engineering graduate with hands-on experience in <strong style={{color: '#fff'}}>PTC Creo, 3D printing, and mechanical design</strong>, 
-              looking for a role to help build precision machinery, modular parts, and accurate 3D models. Currently at Sathyabama Institute of Science &amp; Technology (8.45 CGPA).
+            <p style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.25rem)', color: '#a3a3a3', lineHeight: '1.6', maxWidth: '85%', fontWeight: 300 }}>
+              Detail-oriented graduate with hands-on experience in <strong style={{color: '#fff', fontWeight: 500}}>PTC Creo, 3D printing, and mechanical design</strong>, 
+              looking for a role to help build precision machinery, modular parts, and accurate 3D models. Graduated from Sathyabama Institute of Science &amp; Technology (8.45 CGPA).
             </p>
 
-            {/* PCB BOARD WITH CONTACT LINKS */}
-            <PCBBoard />
+            <div className="glass-input-cta" style={{ marginTop: '1rem' }}>
+              <span>Reach out to collaborate on a project.</span>
+              <div className="cta-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+            </div>
+
           </motion.div>
 
         </div>

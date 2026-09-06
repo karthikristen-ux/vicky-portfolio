@@ -28,21 +28,21 @@ const Navigation = () => {
   }, [menuOpen]);
 
   const navItems = [
-    { path: '/', label: '[ TIMELINE ]' },
-    { path: '/projects', label: '[ PROJECTS ]' },
-    { path: '/certificates', label: '[ CREDENTIALS ]' },
+    { path: '/', label: 'Timeline' },
+    { path: '/projects', label: 'Projects' },
+    { path: '/certificates', label: 'Credentials' },
   ];
 
   return (
     <>
-      <nav className={location.pathname !== '/' ? 'nav-collapsed' : ''}>
-        <Link to="/" className="logo" style={{ textDecoration: 'none', color: 'var(--tva-orange)' }}>
-          <Clock size={32} color="var(--tva-orange)" />
+      <nav className={location.pathname !== '/' ? 'nav-collapsed' : ''} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 2rem' }}>
+        <Link to="/" className="logo" style={{ textDecoration: 'none', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600 }}>
+          <Clock size={24} color="#fff" />
           VENKAT ARCHIVE
         </Link>
 
-        {/* Desktop nav links */}
-        <div className="nav-links">
+        {/* Desktop nav links inside pill */}
+        <div className="glass-pill-nav">
           {navItems.map((item) => (
             <Link
               key={item.path}
@@ -53,6 +53,9 @@ const Navigation = () => {
             </Link>
           ))}
         </div>
+        
+        {/* Empty div for flex-between spacing symmetry */}
+        <div style={{ width: '150px' }}></div>
 
         {/* Hamburger button (mobile only) */}
         <button
