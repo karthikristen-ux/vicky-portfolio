@@ -27,7 +27,7 @@ const projects = [
       { name: 'Mount', stlUrl: '/images/projects/filament loader/parts/circular-mount-holder.stl', description: 'Secure attachment point for spools.\nAdaptable to different spool diameters.' },
       { name: 'Enclosure', stlUrl: '/images/projects/filament loader/parts/enclosure-v3.stl', description: 'Protects the internal mechanics from dust.\nSnap-fit design for easy assembly.' },
       { name: 'Left Side', stlUrl: '/images/projects/filament loader/parts/leftsidesub.stl', description: 'Left structural brace supporting the spool.\nIntegrates directly with the base mount.' },
-      { name: 'Motor', stlUrl: '/images/projects/filament loader/parts/motor-enclosure.stl', description: 'Houses the non-proprietary driving motor.\nDesigned with thermal vents to prevent overheating.' },
+      { name: 'Motor Enclosure', stlUrl: '/images/projects/filament loader/parts/motor-enclosure.stl', description: 'Houses the non-proprietary driving motor.\nDesigned with thermal vents to prevent overheating.' },
       { name: 'Mount V1', stlUrl: '/images/projects/filament loader/parts/mount_v1.stl', description: 'Initial prototype for the spool mount.\nRetained for legacy compatibility.' },
       { name: 'Right Side', stlUrl: '/images/projects/filament loader/parts/rightsidesub-prt-v4.stl', description: 'Right structural brace supporting the spool.\nSymmetrical pairing with the left side.' },
       { name: 'Roller', stlUrl: '/images/projects/filament loader/parts/rlr.stl', description: 'Ensures smooth filament unspooling.\nReduces friction and prevents tangling.' },
